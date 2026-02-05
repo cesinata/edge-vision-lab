@@ -1,75 +1,113 @@
 #include <iostream>
-// hardware libraries
-#include "EdgeImpulse_Inferencing.h" 
-#include "STM32_Power_Mgmt.h"
+#include <thread>
+#include <chrono>
+#include <vector>
 
-// Define System States for the MetCube
+// =============================================================
+// SOLAR-GUARDIAN FIRMWARE SIMULATION
+// Target: STM32F4/H7 | Architecture: Finite State Machine
+// =============================================================
+
+// Mocking Hardware Abstraction Layer (HAL) Constants
+#define GPIO_PIN_SET 1
+#define GPIO_PIN_RESET 0
+
 enum SystemState {
-    IDLE_LOW_POWER,
-    SENSE_ENVIRONMENT,
-    DETECT_WILDLIFE,
-    TRIGGER_DETERRENT
+    STATE_IDLE_SLEEP,   // STOP Mode (Low Power)
+    STATE_ACQUISITION,  // Wake Camera & DMA Transfer
+    STATE_INFERENCE,    // CNN Processing
+    STATE_DETER,        // PWM Actuation
+    STATE_RECOVERY      // Watchdog Triggered
 };
 
-struct MetCubeSystem {
+class MetCubeController {
+private:
     SystemState currentState;
-    bool birdDetected;
-    float batteryVoltage;
+    
+public:
+    MetCubeController() : currentState(STATE_IDLE_SLEEP) {}
+
+    // 1. WATCHDOG TIMER (WDT)
+    // Critical for autonomous remote operation
+    void feedWatchdog() {
+        // STM32 Implementation: HAL_IWDG_Refresh(&hiwdg);
+        // std::cout << "[WDT] Timer Refreshed.\n"; 
+    }
+
+    // 2. SENSOR INTERRUPT
+    // Simulates External Interrupt (EXTI) from PIR Sensor
+    bool checkMotionInterrupt() {
+        // In hardware: return HAL_GPIO_ReadPin(PIR_PORT, PIR_PIN);
+        return (rand() % 100) > 80; // 20% chance of motion for demo
+    }
+
+    // 3. IMAGE ACQUISITION
+    void captureFrame() {
+        std::cout << "[CAM] Triggering DCMI Interface...\n";
+        // STM32 Implementation:
+        // HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_SNAPSHOT, (uint32_t)ram_buffer, IMG_SIZE);
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        std::cout << "[DMA] Frame transfer to RAM complete.\n";
+    }
+
+    // 4. EDGE INFERENCE
+    float runInference() {
+        std::cout << "[AI] Processing MobileNetV3 (Int8 Quantized)...\n";
+        // Note: Tensor Arena should be placed in CCMRAM (Core Coupled Memory) for speed
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        return (float)rand() / RAND_MAX;
+    }
+
+    void run() {
+        std::cout << "=== MetCube Solar-Guardian Initialized ===\n";
+        
+        while (true) {
+            feedWatchdog(); 
+
+            switch (currentState) {
+                case STATE_IDLE_SLEEP:
+                    std::cout << "[PWR] Entering STOP Mode (Wait for Interrupt)...\n";
+                    std::this_thread::sleep_for(std::chrono::seconds(1));
+                    
+                    if (checkMotionInterrupt()) {
+                        std::cout << ">>> INTERRUPT: Motion Detected!\n";
+                        currentState = STATE_ACQUISITION;
+                    }
+                    break;
+
+                case STATE_ACQUISITION:
+                    captureFrame();
+                    currentState = STATE_INFERENCE;
+                    break;
+
+                case STATE_INFERENCE:
+                    {
+                        float confidence = runInference();
+                        std::cout << "[AI] Bird Confidence: " << (confidence * 100) << "%\n";
+
+                        if (confidence > 0.85) {
+                            std::cout << "!!! DETECTION CONFIRMED !!!\n";
+                            currentState = STATE_DETER;
+                        } else {
+                            std::cout << "[AI] False Positive (Drone/Cloud). Sleeping.\n";
+                            currentState = STATE_IDLE_SLEEP;
+                        }
+                    }
+                    break;
+
+                case STATE_DETER:
+                    std::cout << "[ACTUATOR] Firing Piezo Deterrent (PWM)...\n";
+                    // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    currentState = STATE_IDLE_SLEEP;
+                    break;
+            }
+        }
+    }
 };
 
-// SIMULATION: Watchdog Timer (Crucial for remote autonomous systems)
-void feedWatchdog() {
-    // Reset hardware timer to prevent system hang
-    // printf("Watchdog fed.\n");
-}
-
-void setup() {
-    // Initialize sensors and load the TFLite model
-    initCamera(RESOLUTION_640x640); // Matches dataset resolution 
-    initPowerManagement();
-    printf("Solar-Guardian System Initialized.\n");
-}
-
-void loop() {
-    static MetCubeSystem system = {IDLE_LOW_POWER, false, 12.5};
-    
-    feedWatchdog(); // Always keep the system alive
-
-    switch (system.currentState) {
-        case IDLE_LOW_POWER:
-            // Deep sleep logic to save solar battery
-            if (motionSensorTriggered()) {
-                system.currentState = SENSE_ENVIRONMENT;
-            }
-            break;
-
-        case SENSE_ENVIRONMENT:
-            // Wake up camera and grab a frame
-            // Capture 640x640 frame for the quantized model
-            Frame data = captureFrame(); 
-            system.currentState = DETECT_WILDLIFE;
-            break;
-
-        case DETECT_WILDLIFE:
-            // Run inference on the Quantized Model
-            float prediction = runInference(data);
-            
-            // Threshold logic (tuned via PR Curves [cite: 184])
-            if (prediction > 0.85) { 
-                printf("Wildlife Detected! Probability: %.2f\n", prediction);
-                system.currentState = TRIGGER_DETERRENT;
-            } else {
-                printf("Object is 'Nothing/Drone'. Return to sleep.\n");
-                system.currentState = IDLE_LOW_POWER;
-            }
-            break;
-
-        case TRIGGER_DETERRENT:
-            // Activate audio/visual deterrents
-            activatePiezo();
-            logEvent("Bird Repelled");
-            delay(2000); 
-            system.currentState = IDLE_LOW_POWER;
-            break;
-    }
+int main() {
+    MetCubeController system;
+    system.run();
+    return 0;
 }
