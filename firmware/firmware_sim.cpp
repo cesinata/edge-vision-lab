@@ -1,10 +1,11 @@
+#include <cstdlib>
 #include <iostream>
 #include <thread>
 #include <chrono>
 #include <vector>
 
 // =============================================================
-// SOLAR-GUARDIAN FIRMWARE SIMULATION
+// FIRMWARE SIMULATION (legacy, random inputs, to be replaced in Phase 5)
 // Target: STM32F4/H7 | Architecture: Finite State Machine
 // =============================================================
 
@@ -20,12 +21,12 @@ enum SystemState {
     STATE_RECOVERY      // Watchdog Triggered
 };
 
-class MetCubeController {
+class GuardianController {
 private:
     SystemState currentState;
     
 public:
-    MetCubeController() : currentState(STATE_IDLE_SLEEP) {}
+    GuardianController() : currentState(STATE_IDLE_SLEEP) {}
 
     // 1. WATCHDOG TIMER (WDT)
     // Critical for autonomous remote operation
@@ -59,7 +60,7 @@ public:
     }
 
     void run() {
-        std::cout << "=== MetCube Solar-Guardian Initialized ===\n";
+        std::cout << "=== Guardian state machine simulation (random inputs) ===\n";
         
         while (true) {
             feedWatchdog(); 
@@ -107,7 +108,7 @@ public:
 };
 
 int main() {
-    MetCubeController system;
+    GuardianController system;
     system.run();
     return 0;
 }

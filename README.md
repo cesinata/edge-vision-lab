@@ -1,51 +1,45 @@
-# Solar-Guardian: Embedded Wildlife Detection System
+# edge-vision-lab
 
-* **Status:** Functional Prototype (Proof of Concept)
-* **Target Hardware:** STM32 / ESP32 (Edge Impulse Compatible)
-* **Language:** Python (TFLite), C++ (Firmware)
+Status: work in progress. Phase 1 of 8 (repo consolidation). There are no results yet, and this README says so rather than quoting numbers from earlier versions of the project.
 
-## 1. Project Overview
-Solar-Guardian is an edge-optimized wildlife detection system designed for autonomous solar weather stations (like the **MetCube**). It addresses the critical need to distinguish biological targets (birds) from atmospheric noise ("Nothing") to trigger self-cleaning or deterrent mechanisms without draining battery power.
+## What this is
 
-## 2. Technical Approach
-Unlike standard cloud-based detection, this project focuses on **Edge AI** constraints:
-* **Data Source:** Designed around the **StealthKnight "Bird vs Drone" dataset** [Kaggle].
-    * *Why this dataset?* It provides pre-segmented 640x640 samples which perfectly align with the input tensor limits of efficient mobile architectures.
-    * *Strategy:* We utilize the "Drone" class as "Hard Negatives" to train the model to ignore non-biological flying objects.
-* **Model Architecture:** MobileNetV3 (Quantized).
-* **Quantization:** Post-Training Quantization (PTQ) to Int8 to reduce model size by ~90% for microcontroller deployment.
+A small image classifier for three classes: **bird**, **drone**, and **neither** (background). The aim is to train it, quantise it to int8, measure it, test the state/power logic of a microcontroller camera node on a laptop, and explain the pipeline on an interactive website. It is written for people hiring in ML and edge AI, and for learners new to edge AI.
 
-## 3. Firmware Logic (C++)
-The system operates on a Finite State Machine (FSM) to minimize power consumption:
-* **IDLE:** Low-power sleep mode.
-* **SENSE:** Wake-on-motion (simulated).
-* **DETECT:** Run TFLite Micro inference.
-* **DETER:** Trigger peripherals (Piezo/Visual) only upon high-confidence "Wildlife" detection.
+This is **image classification on crops**, not object detection. The model sees one cropped image and says which class it is. It does not find objects in a scene.
 
-## 4. File Structure
-* `deployment/quantize_model.py`: Script to convert Keras models to TFLite Int8 format.
-* `deployment/firmware_logic.cpp`: C++ implementation of the Watchdog Timer and State Machine logic.
+## Results
 
-## 5. Performance Results
-Running the quantization pipeline (`deployment/quantize_model.py`) yielded significant storage savings, making the model feasible for flash-constrained devices like the STM32.
+None yet. Every number that appears here later will be labelled `measured (host CPU)`, `measured (browser)`, `estimated (tool)`, `simulated`, `vendor-published` or `not measured on hardware`, with the command that reproduces it.
 
-```text
-------------------------------
-Original Model Size: 29.34 KB
-Quantized Model Size: 3.02 KB
-COMPRESSION SUCCESS: Reduced by 89.72%
-------------------------------
+## What is in the repo now
+
+| Path | State |
+|---|---|
+| `firmware/firmware_sim.cpp` | Legacy console simulation. Motion and model output are random numbers and the loop never exits. The watchdog does nothing and `STATE_RECOVERY` is never entered. Builds with CMake. To be rewritten in Phase 5 to run on scripted input traces, with unit tests. |
+| `export/baseline_quantize.py` | Quantises a stock ImageNet MobileNetV3Small to int8. It is **not** a trained bird/drone model and has no fine-tuning. Needs your own calibration images. |
+| `docs/decisions.md`, `docs/data.md`, `docs/todo.md` | Decisions, dataset candidates and licences, open items. |
+
+Build the firmware simulation (it runs until you stop it):
+
+```
+cmake -S firmware -B build && cmake --build build && ./build/firmware_sim
 ```
 
-## 6. Key Engineering Challenges
-* **The "Nothing" Class Ambiguity:**
-    * *Challenge:* In a "Wildlife vs. Nothing" model, "Nothing" is not just empty sky. It includes clouds, sun glare, and mechanical distractors (drones).
-    * *Solution:* Designed the dataset strategy to include "Hard Negatives" (drones from the StealthKnight dataset) to force the model to learn biological features (wing flapping) rather than just "dark object in sky."
+## What it does not do
 
-* **Resolution vs. Latency Trade-off:**
-    * *Challenge:* Standard 224x224 inputs destroy the detail of distant birds, but 4K inputs are too heavy for an STM32.
-    * *Solution:* Standardized on 640x640 input resolution. This offers the best balance: high enough to detect small objects, but low enough to be processed by a quantized MobileNetV3.
+- It has not been run on any STM32 or ESP32 board. No board is available. Nothing here claims on-device latency, frame rate, power draw or NPU performance. Those are `not measured on hardware`.
+- It does not detect objects in a scene.
+- Earlier versions of this README quoted a model size reduction ("29.34 KB to 3.02 KB"). Those figures described files that are no longer in the repo and have been removed.
 
-* **Autonomous Reliability:**
-    * *Challenge:* Edge devices in remote locations cannot be manually reset if they hang.
-    * *Solution:* Implemented a simulated **Watchdog Timer** in the C++ firmware (`firmware_logic.cpp`) to ensure the system auto-recovers from any freeze states.
+## Data and licences
+
+No dataset has been chosen yet. Candidates and their licence status are in `docs/data.md`. No raw datasets are committed.
+
+## AI disclosure
+
+AI assistance (Claude) was used to draft and review code and text in this repo. I ran the experiments, and every reported number will come from a run in this repo.
+
+## History
+
+This repo started as `Solar-Guardian-Edge-AI`. The original commits are kept. Some earlier files, including two model files and two test images of unknown origin, were removed from the working tree in Phase 1 but remain in git history.

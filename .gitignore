@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+build/
+node_modules/
+dist/
+.DS_Store
+data/
+*.h5
+*.tflite
+*.onnx
