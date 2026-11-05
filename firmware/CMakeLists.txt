@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+project(guardian_firmware CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_executable(firmware_sim firmware_sim.cpp)
+target_compile_options(firmware_sim PRIVATE -Wall -Wextra)
