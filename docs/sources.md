@@ -27,6 +27,9 @@ Each entry says what was checked and what was not. "Verified" means I read the n
 - PyTorch, torchvision, onnx, onnxruntime, numpy, scipy, OpenCV, Pillow, ImageHash: installed from PyPI at the versions in `requirements.txt`. Licences not individually re-verified.
 - `mcos-decoder` 0.1.0 (MIT per its package metadata; 265 lines of pure Python, read in full). Only its stream walker is used, see `train/mat_labels.py`.
 
+## Fonts (website)
+- IBM Plex Sans and IBM Plex Mono, version 5.3.0 of the `@fontsource/ibm-plex-sans` and `@fontsource/ibm-plex-mono` packages, self-hosted (latin subset, weights 400 to 700 and 400 to 600). Licence: SIL Open Font Licence 1.1, "Copyright 2019 IBM Corp." Verified 2026-11-18 from the `LICENSE` file and `license` field in each package. The licence texts are shipped with the site under `licenses/` (copied from the packages into `web/public/licenses/`). No font service is contacted at run time.
+
 ## Planned, not used yet
 - Open Images V7 as an out-of-domain test set: annotations CC BY 4.0 (Google LLC); images "listed as having a CC BY 2.0 license" with per-image authors (https://storage.googleapis.com/openimages/web/factsfigures_v7.html, read 2026-11-06). Flickr's own terms were not read. Not downloaded.
 
