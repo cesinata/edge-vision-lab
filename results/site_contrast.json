@@ -1,0 +1,281 @@
+{
+ "label": "measured (host CPU)",
+ "command": "python scripts/check_contrast.py",
+ "source": "web/src/styles.css",
+ "pairs_checked": 30,
+ "failures": 0,
+ "lowest_ratio": 7.14,
+ "failing_pairs": [],
+ "pairs": [
+  {
+   "theme": "light",
+   "text": "ink",
+   "background": "bg",
+   "use": "body and heading text",
+   "ratio": 15.6,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "light",
+   "text": "ink-2",
+   "background": "bg",
+   "use": "secondary text",
+   "ratio": 10.05,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "light",
+   "text": "muted",
+   "background": "bg",
+   "use": "labels and captions",
+   "ratio": 7.53,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "light",
+   "text": "ink",
+   "background": "panel",
+   "use": "text on grid-paper panels",
+   "ratio": 14.79,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "light",
+   "text": "ink-2",
+   "background": "panel",
+   "use": "secondary text on panels",
+   "ratio": 9.53,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "light",
+   "text": "muted",
+   "background": "panel",
+   "use": "captions on panels",
+   "ratio": 7.14,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "light",
+   "text": "on-ink",
+   "background": "ink",
+   "use": "primary button and number badges",
+   "ratio": 15.6,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "light",
+   "text": "line",
+   "background": "bg",
+   "use": "illustration strokes (non-text)",
+   "ratio": 15.6,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "theme": "light",
+   "text": "line",
+   "background": "panel",
+   "use": "illustration strokes on panels (non-text)",
+   "ratio": 14.79,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "theme": "light",
+   "text": "ink",
+   "background": "mark",
+   "use": "text on a yellow highlight (light-theme ink)",
+   "ratio": 10.75,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "ink",
+   "background": "bg",
+   "use": "body and heading text",
+   "ratio": 15.48,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "ink-2",
+   "background": "bg",
+   "use": "secondary text",
+   "ratio": 12.06,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "muted",
+   "background": "bg",
+   "use": "labels and captions",
+   "ratio": 9.01,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "ink",
+   "background": "panel",
+   "use": "text on grid-paper panels",
+   "ratio": 13.81,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "ink-2",
+   "background": "panel",
+   "use": "secondary text on panels",
+   "ratio": 10.77,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "muted",
+   "background": "panel",
+   "use": "captions on panels",
+   "ratio": 8.04,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "on-ink",
+   "background": "ink",
+   "use": "primary button and number badges",
+   "ratio": 15.48,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "line",
+   "background": "bg",
+   "use": "illustration strokes (non-text)",
+   "ratio": 10.65,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "line",
+   "background": "panel",
+   "use": "illustration strokes on panels (non-text)",
+   "ratio": 9.5,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "theme": "dark (system)",
+   "text": "ink",
+   "background": "mark",
+   "use": "text on a yellow highlight (light-theme ink)",
+   "ratio": 10.75,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "ink",
+   "background": "bg",
+   "use": "body and heading text",
+   "ratio": 15.48,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "ink-2",
+   "background": "bg",
+   "use": "secondary text",
+   "ratio": 12.06,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "muted",
+   "background": "bg",
+   "use": "labels and captions",
+   "ratio": 9.01,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "ink",
+   "background": "panel",
+   "use": "text on grid-paper panels",
+   "ratio": 13.81,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "ink-2",
+   "background": "panel",
+   "use": "secondary text on panels",
+   "ratio": 10.77,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "muted",
+   "background": "panel",
+   "use": "captions on panels",
+   "ratio": 8.04,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "on-ink",
+   "background": "ink",
+   "use": "primary button and number badges",
+   "ratio": 15.48,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "line",
+   "background": "bg",
+   "use": "illustration strokes (non-text)",
+   "ratio": 10.65,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "line",
+   "background": "panel",
+   "use": "illustration strokes on panels (non-text)",
+   "ratio": 9.5,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "theme": "dark (toggle)",
+   "text": "ink",
+   "background": "mark",
+   "use": "text on a yellow highlight (light-theme ink)",
+   "ratio": 10.75,
+   "required": 4.5,
+   "pass": true
+  }
+ ]
+}
