@@ -1,0 +1,479 @@
+{
+ "label": "measured (host CPU)",
+ "command": "python scripts/make_figures.py",
+ "method": "WCAG 2.x relative-luminance contrast ratio of each text colour on its background colour",
+ "pairs_checked": 52,
+ "failures": 0,
+ "lowest_ratio": 4.91,
+ "failing_pairs": [],
+ "pairs": [
+  {
+   "figure": "pipeline",
+   "variant": "light",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 13.26,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "light",
+   "text": "bg",
+   "background": "ink",
+   "ratio": 13.26,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "light",
+   "text": "ink",
+   "background": "lilac",
+   "ratio": 10.76,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "light",
+   "text": "ink",
+   "background": "mint",
+   "ratio": 11.45,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "light",
+   "text": "ink",
+   "background": "butter",
+   "ratio": 11.82,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "light",
+   "text": "muted",
+   "background": "bg",
+   "ratio": 6.06,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "dark",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 14.71,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "dark",
+   "text": "bg",
+   "background": "ink",
+   "ratio": 14.71,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "dark",
+   "text": "ink",
+   "background": "lilac",
+   "ratio": 10.54,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "dark",
+   "text": "ink",
+   "background": "mint",
+   "ratio": 9.53,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "dark",
+   "text": "ink",
+   "background": "butter",
+   "ratio": 9.05,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "pipeline",
+   "variant": "dark",
+   "text": "muted",
+   "background": "bg",
+   "ratio": 8.54,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "light",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 13.26,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "light",
+   "text": "ink",
+   "background": "butter",
+   "ratio": 11.82,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "light",
+   "text": "ink",
+   "background": "mint",
+   "ratio": 11.45,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "light",
+   "text": "muted",
+   "background": "surface",
+   "ratio": 6.41,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "light",
+   "text": "onsplit",
+   "background": "train",
+   "ratio": 4.93,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "light",
+   "text": "onsplit",
+   "background": "test",
+   "ratio": 7.85,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "light",
+   "text": "onsplit",
+   "background": "val",
+   "ratio": 5.98,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "light",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 13.26,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "dark",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 14.71,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "dark",
+   "text": "ink",
+   "background": "butter",
+   "ratio": 9.05,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "dark",
+   "text": "ink",
+   "background": "mint",
+   "ratio": 9.53,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "dark",
+   "text": "muted",
+   "background": "surface",
+   "ratio": 7.61,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "dark",
+   "text": "onsplit",
+   "background": "train",
+   "ratio": 7.48,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "dark",
+   "text": "onsplit",
+   "background": "test",
+   "ratio": 10.65,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "dark",
+   "text": "onsplit",
+   "background": "val",
+   "ratio": 8.94,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "split-by-scene",
+   "variant": "dark",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 14.71,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "light",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 13.26,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "light",
+   "text": "muted",
+   "background": "bg",
+   "ratio": 6.06,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "light",
+   "text": "ink",
+   "background": "lilac",
+   "ratio": 10.76,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "light",
+   "text": "ink",
+   "background": "butter",
+   "ratio": 11.82,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "light",
+   "text": "ink",
+   "background": "mint",
+   "ratio": 11.45,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "light",
+   "text": "ink",
+   "background": "surface",
+   "ratio": 14.05,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "dark",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 14.71,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "dark",
+   "text": "muted",
+   "background": "bg",
+   "ratio": 8.54,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "dark",
+   "text": "ink",
+   "background": "lilac",
+   "ratio": 10.54,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "dark",
+   "text": "ink",
+   "background": "butter",
+   "ratio": 9.05,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "dark",
+   "text": "ink",
+   "background": "mint",
+   "ratio": 9.53,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "board-data-path",
+   "variant": "dark",
+   "text": "ink",
+   "background": "surface",
+   "ratio": 13.12,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "light",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 13.26,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "light",
+   "text": "ink",
+   "background": "lilac",
+   "ratio": 10.76,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "light",
+   "text": "muted",
+   "background": "lilac",
+   "ratio": 4.91,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "light",
+   "text": "ink",
+   "background": "surface",
+   "ratio": 14.05,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "light",
+   "text": "ink",
+   "background": "mint",
+   "ratio": 11.45,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "light",
+   "text": "muted",
+   "background": "mint",
+   "ratio": 5.23,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "dark",
+   "text": "ink",
+   "background": "bg",
+   "ratio": 14.71,
+   "required": 3.0,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "dark",
+   "text": "ink",
+   "background": "lilac",
+   "ratio": 10.54,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "dark",
+   "text": "muted",
+   "background": "lilac",
+   "ratio": 6.12,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "dark",
+   "text": "ink",
+   "background": "surface",
+   "ratio": 13.12,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "dark",
+   "text": "ink",
+   "background": "mint",
+   "ratio": 9.53,
+   "required": 4.5,
+   "pass": true
+  },
+  {
+   "figure": "results",
+   "variant": "dark",
+   "text": "muted",
+   "background": "mint",
+   "ratio": 5.53,
+   "required": 4.5,
+   "pass": true
+  }
+ ]
+}

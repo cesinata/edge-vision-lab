@@ -1,0 +1,217 @@
+{
+ "label": "measured (host CPU)",
+ "command": "python export/select_quantisation.py",
+ "selection_rule": "highest macro F1 on the validation split; the test split is not used",
+ "calibration": "198 train crops, class-balanced, seed 0",
+ "chosen": "percentile/conv_gemm/float-se+depthwise",
+ "variants": [
+  {
+   "variant": "float32 reference",
+   "val_macro_f1": 0.7676,
+   "val_accuracy": 0.7795,
+   "val_recall": {
+    "bird": 0.7618,
+    "drone": 0.6768,
+    "neither": 0.8493
+   }
+  },
+  {
+   "variant": "minmax/all",
+   "val_macro_f1": 0.3309,
+   "val_accuracy": 0.478,
+   "val_recall": {
+    "bird": 0.0059,
+    "drone": 0.0,
+    "neither": 1.0
+   },
+   "size_bytes": 1870793
+  },
+  {
+   "variant": "minmax/all/float-last-gemm",
+   "val_macro_f1": 0.3309,
+   "val_accuracy": 0.478,
+   "val_recall": {
+    "bird": 0.0059,
+    "drone": 0.0,
+    "neither": 1.0
+   },
+   "size_bytes": 1879030
+  },
+  {
+   "variant": "minmax/conv_gemm",
+   "val_macro_f1": 0.3097,
+   "val_accuracy": 0.4929,
+   "val_recall": {
+    "bird": 0.1147,
+    "drone": 0.0556,
+    "neither": 0.9433
+   },
+   "size_bytes": 1852714
+  },
+  {
+   "variant": "minmax/conv_gemm/float-last-gemm",
+   "val_macro_f1": 0.3101,
+   "val_accuracy": 0.4936,
+   "val_recall": {
+    "bird": 0.1147,
+    "drone": 0.0556,
+    "neither": 0.9448
+   },
+   "size_bytes": 1860170
+  },
+  {
+   "variant": "entropy/all",
+   "val_macro_f1": 0.3309,
+   "val_accuracy": 0.478,
+   "val_recall": {
+    "bird": 0.0059,
+    "drone": 0.0,
+    "neither": 1.0
+   },
+   "size_bytes": 1870793
+  },
+  {
+   "variant": "entropy/all/float-last-gemm",
+   "val_macro_f1": 0.3309,
+   "val_accuracy": 0.478,
+   "val_recall": {
+    "bird": 0.0059,
+    "drone": 0.0,
+    "neither": 1.0
+   },
+   "size_bytes": 1879030
+  },
+  {
+   "variant": "entropy/conv_gemm",
+   "val_macro_f1": 0.3097,
+   "val_accuracy": 0.4929,
+   "val_recall": {
+    "bird": 0.1147,
+    "drone": 0.0556,
+    "neither": 0.9433
+   },
+   "size_bytes": 1852714
+  },
+  {
+   "variant": "entropy/conv_gemm/float-last-gemm",
+   "val_macro_f1": 0.3101,
+   "val_accuracy": 0.4936,
+   "val_recall": {
+    "bird": 0.1147,
+    "drone": 0.0556,
+    "neither": 0.9448
+   },
+   "size_bytes": 1860170
+  },
+  {
+   "variant": "percentile/all",
+   "val_macro_f1": 0.3102,
+   "val_accuracy": 0.4979,
+   "val_recall": {
+    "bird": 0.1294,
+    "drone": 0.0379,
+    "neither": 0.9567
+   },
+   "size_bytes": 1870676
+  },
+  {
+   "variant": "percentile/all/float-last-gemm",
+   "val_macro_f1": 0.3044,
+   "val_accuracy": 0.4957,
+   "val_recall": {
+    "bird": 0.1176,
+    "drone": 0.0379,
+    "neither": 0.9582
+   },
+   "size_bytes": 1878913
+  },
+  {
+   "variant": "percentile/conv_gemm",
+   "val_macro_f1": 0.5315,
+   "val_accuracy": 0.606,
+   "val_recall": {
+    "bird": 0.4412,
+    "drone": 0.2121,
+    "neither": 0.9224
+   },
+   "size_bytes": 1852597
+  },
+  {
+   "variant": "percentile/conv_gemm/float-last-gemm",
+   "val_macro_f1": 0.53,
+   "val_accuracy": 0.6053,
+   "val_recall": {
+    "bird": 0.4353,
+    "drone": 0.2121,
+    "neither": 0.9239
+   },
+   "size_bytes": 1860053
+  },
+  {
+   "variant": "percentile/conv_gemm/float-se",
+   "val_macro_f1": 0.5262,
+   "val_accuracy": 0.6024,
+   "val_recall": {
+    "bird": 0.4324,
+    "drone": 0.2071,
+    "neither": 0.9224
+   },
+   "size_bytes": 3143066
+  },
+  {
+   "variant": "percentile/conv_gemm/float-depthwise",
+   "val_macro_f1": 0.717,
+   "val_accuracy": 0.7354,
+   "val_recall": {
+    "bird": 0.7824,
+    "drone": 0.4621,
+    "neither": 0.8731
+   },
+   "size_bytes": 1968539
+  },
+  {
+   "variant": "percentile/conv_gemm/float-se+depthwise",
+   "val_macro_f1": 0.7318,
+   "val_accuracy": 0.7475,
+   "val_recall": {
+    "bird": 0.7853,
+    "drone": 0.4949,
+    "neither": 0.8776
+   },
+   "size_bytes": 3259008
+  },
+  {
+   "variant": "minmax/conv_gemm/float-se",
+   "val_macro_f1": 0.283,
+   "val_accuracy": 0.468,
+   "val_recall": {
+    "bird": 0.1029,
+    "drone": 0.0354,
+    "neither": 0.909
+   },
+   "size_bytes": 3143183
+  },
+  {
+   "variant": "minmax/conv_gemm/float-depthwise",
+   "val_macro_f1": 0.3901,
+   "val_accuracy": 0.5043,
+   "val_recall": {
+    "bird": 0.2382,
+    "drone": 0.1439,
+    "neither": 0.8522
+   },
+   "size_bytes": 1968629
+  },
+  {
+   "variant": "minmax/conv_gemm/float-se+depthwise",
+   "val_macro_f1": 0.4551,
+   "val_accuracy": 0.5676,
+   "val_recall": {
+    "bird": 0.2206,
+    "drone": 0.2273,
+    "neither": 0.9448
+   },
+   "size_bytes": 3259098
+  }
+ ]
+}

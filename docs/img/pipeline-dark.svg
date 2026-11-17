@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 868 470" width="868" height="470" role="img" aria-labelledby="t d" font-family='ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace'>
+<title id="t">Pipeline from data to firmware</title>
+<desc id="d">Six steps in two rows: data, split, train, evaluate, quantise, firmware. Each tile has a number and a two-line caption.</desc>
+<rect x="0" y="0" width="868" height="470" rx="28" fill="#1F1B26"/>
+<text x="32" y="46" font-size="20" font-weight="bold" fill="#F1EEF5" text-anchor="start">From video to firmware</text>
+<rect x="32" y="72" width="252" height="150" rx="22" fill="#3A3150"/>
+<circle cx="68" cy="112" r="17" fill="#F1EEF5"/>
+<text x="68" y="118" font-size="16" font-weight="bold" fill="#1F1B26" text-anchor="middle">1</text>
+<text x="98" y="118" font-size="18" font-weight="bold" fill="#F1EEF5" text-anchor="start">Data</text>
+<text x="56" y="164" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">Labelled video clips,</text>
+<text x="56" y="188" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">boxes become crops</text>
+<circle cx="290" cy="147" r="2.5" fill="#BDB5C9"/>
+<circle cx="296" cy="147" r="2.5" fill="#BDB5C9"/>
+<circle cx="302" cy="147" r="2.5" fill="#BDB5C9"/>
+<rect x="308" y="72" width="252" height="150" rx="22" fill="#25423A"/>
+<circle cx="344" cy="112" r="17" fill="#F1EEF5"/>
+<text x="344" y="118" font-size="16" font-weight="bold" fill="#1F1B26" text-anchor="middle">2</text>
+<text x="374" y="118" font-size="18" font-weight="bold" fill="#F1EEF5" text-anchor="start">Split</text>
+<text x="332" y="164" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">Whole scenes go to</text>
+<text x="332" y="188" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">train, val or test</text>
+<circle cx="566" cy="147" r="2.5" fill="#BDB5C9"/>
+<circle cx="572" cy="147" r="2.5" fill="#BDB5C9"/>
+<circle cx="578" cy="147" r="2.5" fill="#BDB5C9"/>
+<rect x="584" y="72" width="252" height="150" rx="22" fill="#4A3F1E"/>
+<circle cx="620" cy="112" r="17" fill="#F1EEF5"/>
+<text x="620" y="118" font-size="16" font-weight="bold" fill="#1F1B26" text-anchor="middle">3</text>
+<text x="650" y="118" font-size="18" font-weight="bold" fill="#F1EEF5" text-anchor="start">Train</text>
+<text x="608" y="164" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">MobileNetV3-Small,</text>
+<text x="608" y="188" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">fine-tuned on CPU</text>
+<rect x="32" y="246" width="252" height="150" rx="22" fill="#3A3150"/>
+<circle cx="68" cy="286" r="17" fill="#F1EEF5"/>
+<text x="68" y="292" font-size="16" font-weight="bold" fill="#1F1B26" text-anchor="middle">4</text>
+<text x="98" y="292" font-size="18" font-weight="bold" fill="#F1EEF5" text-anchor="start">Evaluate</text>
+<text x="56" y="338" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">Test split only,</text>
+<text x="56" y="362" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">intervals by video</text>
+<circle cx="290" cy="321" r="2.5" fill="#BDB5C9"/>
+<circle cx="296" cy="321" r="2.5" fill="#BDB5C9"/>
+<circle cx="302" cy="321" r="2.5" fill="#BDB5C9"/>
+<rect x="308" y="246" width="252" height="150" rx="22" fill="#25423A"/>
+<circle cx="344" cy="286" r="17" fill="#F1EEF5"/>
+<text x="344" y="292" font-size="16" font-weight="bold" fill="#1F1B26" text-anchor="middle">5</text>
+<text x="374" y="292" font-size="18" font-weight="bold" fill="#F1EEF5" text-anchor="start">Quantise</text>
+<text x="332" y="338" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">ONNX, then int8,</text>
+<text x="332" y="362" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">size and accuracy</text>
+<circle cx="566" cy="321" r="2.5" fill="#BDB5C9"/>
+<circle cx="572" cy="321" r="2.5" fill="#BDB5C9"/>
+<circle cx="578" cy="321" r="2.5" fill="#BDB5C9"/>
+<rect x="584" y="246" width="252" height="150" rx="22" fill="#4A3F1E"/>
+<circle cx="620" cy="286" r="17" fill="#F1EEF5"/>
+<text x="620" y="292" font-size="16" font-weight="bold" fill="#1F1B26" text-anchor="middle">6</text>
+<text x="650" y="292" font-size="18" font-weight="bold" fill="#F1EEF5" text-anchor="start">Firmware</text>
+<text x="608" y="338" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">C++ state logic,</text>
+<text x="608" y="362" font-size="13" font-weight="normal" fill="#F1EEF5" text-anchor="start">tested on a laptop</text>
+<text x="32" y="440" font-size="13" font-weight="normal" fill="#BDB5C9" text-anchor="start">Every step is a script in this repo. Numbers appear only where a run produced them.</text>
+</svg>

@@ -4,6 +4,9 @@ This is NOT a trained bird/drone model. It has 1000 ImageNet classes and no
 fine-tuning. It exists only to exercise the TFLite int8 conversion path until
 the real model from train/ is available (Phase 4).
 
+Needs TensorFlow, which is not in requirements.txt (the main pipeline uses PyTorch
+and ONNX). Install it separately if you want to run this legacy script.
+
 Usage (from the repo root):
     python export/baseline_quantize.py --calib-dir path/to/some/images
 

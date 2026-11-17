@@ -1,0 +1,1348 @@
+{
+ "label": "measured (host CPU)",
+ "command": "python train/error_analysis.py --tag torch",
+ "n_crops": 1870,
+ "n_wrong": 494,
+ "error_rate_by_subtype_and_distance": {
+  "bird/MEDIUM": {
+   "n": 224,
+   "n_videos": 10,
+   "error_rate": 0.2545
+  },
+  "bird/DISTANT": {
+   "n": 43,
+   "n_videos": 2,
+   "error_rate": 0.093
+  },
+  "drone/CLOSE": {
+   "n": 127,
+   "n_videos": 6,
+   "error_rate": 0.1575
+  },
+  "drone/MEDIUM": {
+   "n": 339,
+   "n_videos": 16,
+   "error_rate": 0.4513
+  },
+  "drone/DISTANT": {
+   "n": 212,
+   "n_videos": 10,
+   "error_rate": 0.8962
+  },
+  "airplane/CLOSE": {
+   "n": 43,
+   "n_videos": 2,
+   "error_rate": 0.5349
+  },
+  "airplane/MEDIUM": {
+   "n": 63,
+   "n_videos": 3,
+   "error_rate": 0.1905
+  },
+  "airplane/DISTANT": {
+   "n": 107,
+   "n_videos": 5,
+   "error_rate": 0.1402
+  },
+  "helicopter/CLOSE": {
+   "n": 42,
+   "n_videos": 2,
+   "error_rate": 0.0476
+  },
+  "helicopter/MEDIUM": {
+   "n": 41,
+   "n_videos": 2,
+   "error_rate": 0.3902
+  },
+  "background/CLOSE": {
+   "n": 103,
+   "n_videos": 10,
+   "error_rate": 0.0
+  },
+  "background/MEDIUM": {
+   "n": 339,
+   "n_videos": 31,
+   "error_rate": 0.0059
+  },
+  "background/DISTANT": {
+   "n": 187,
+   "n_videos": 17,
+   "error_rate": 0.0
+  }
+ },
+ "by_object_size_px2": {
+  "bird_and_drone": {
+   "low": {
+    "range": [
+     226.27,
+     701.48
+    ],
+    "n": 315,
+    "error_rate": 0.5365
+   },
+   "mid": {
+    "range": [
+     701.8,
+     1056.56
+    ],
+    "n": 315,
+    "error_rate": 0.4508
+   },
+   "high": {
+    "range": [
+     1057.4,
+     6679.86
+    ],
+    "n": 315,
+    "error_rate": 0.3587
+   }
+  },
+  "all_object_crops": {
+   "low": {
+    "range": [
+     226.27,
+     700.6
+    ],
+    "n": 414,
+    "error_rate": 0.4493
+   },
+   "mid": {
+    "range": [
+     700.64,
+     1114.41
+    ],
+    "n": 413,
+    "error_rate": 0.4237
+   },
+   "high": {
+    "range": [
+     1116.8,
+     25778.06
+    ],
+    "n": 414,
+    "error_rate": 0.3164
+   }
+  }
+ },
+ "by_crop_brightness_0_255": {
+  "bird_and_drone": {
+   "low": {
+    "range": [
+     57.14,
+     124.66
+    ],
+    "n": 315,
+    "error_rate": 0.3302
+   },
+   "mid": {
+    "range": [
+     124.93,
+     141.67
+    ],
+    "n": 315,
+    "error_rate": 0.3968
+   },
+   "high": {
+    "range": [
+     141.76,
+     192.46
+    ],
+    "n": 315,
+    "error_rate": 0.619
+   }
+  },
+  "all_object_crops": {
+   "low": {
+    "range": [
+     57.14,
+     123.32
+    ],
+    "n": 414,
+    "error_rate": 0.2778
+   },
+   "mid": {
+    "range": [
+     123.36,
+     141.58
+    ],
+    "n": 413,
+    "error_rate": 0.3923
+   },
+   "high": {
+    "range": [
+     141.64,
+     192.46
+    ],
+    "n": 414,
+    "error_rate": 0.5193
+   }
+  }
+ },
+ "by_crop_texture_std": {
+  "bird_and_drone": {
+   "low": {
+    "range": [
+     0.6,
+     3.94
+    ],
+    "n": 315,
+    "error_rate": 0.5016
+   },
+   "mid": {
+    "range": [
+     3.94,
+     6.6
+    ],
+    "n": 315,
+    "error_rate": 0.6159
+   },
+   "high": {
+    "range": [
+     6.6,
+     61.2
+    ],
+    "n": 315,
+    "error_rate": 0.2286
+   }
+  },
+  "all_object_crops": {
+   "low": {
+    "range": [
+     0.6,
+     3.88
+    ],
+    "n": 414,
+    "error_rate": 0.4227
+   },
+   "mid": {
+    "range": [
+     3.88,
+     6.9
+    ],
+    "n": 413,
+    "error_rate": 0.5303
+   },
+   "high": {
+    "range": [
+     6.91,
+     61.2
+    ],
+    "n": 414,
+    "error_rate": 0.2367
+   }
+  }
+ },
+ "background_crops": {
+  "n": 629,
+  "errors": 2
+ },
+ "background_errors_texture": [
+  41.93,
+  32.44
+ ],
+ "wrong_by_subtype_to_predicted": {
+  "drone -> neither": 258,
+  "drone -> bird": 105,
+  "bird -> neither": 60,
+  "airplane -> bird": 31,
+  "airplane -> drone": 19,
+  "helicopter -> drone": 18,
+  "bird -> drone": 1,
+  "background -> drone": 1,
+  "background -> bird": 1
+ },
+ "drone_crops_by_scene": [
+  {
+   "scene_cluster": 43,
+   "n_videos": 27,
+   "n_crops": 573,
+   "error_rate": 0.4782,
+   "distance_mix": {
+    "CLOSE": 6,
+    "MEDIUM": 15,
+    "DISTANT": 6
+   }
+  },
+  {
+   "scene_cluster": 83,
+   "n_videos": 5,
+   "n_crops": 105,
+   "error_rate": 0.8476,
+   "distance_mix": {
+    "CLOSE": 0,
+    "MEDIUM": 1,
+    "DISTANT": 4
+   }
+  }
+ ],
+ "videos_by_error_rate": [
+  {
+   "video": "V_DRONE_019",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 33,
+   "wrong": 22,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285,
+    300,
+    315
+   ],
+   "accuracy": 0.3333
+  },
+  {
+   "video": "V_DRONE_050",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 33,
+   "wrong": 22,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285,
+    300,
+    315
+   ],
+   "accuracy": 0.3333
+  },
+  {
+   "video": "V_DRONE_009",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 21,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.3438
+  },
+  {
+   "video": "V_DRONE_010",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 21,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.3438
+  },
+  {
+   "video": "V_DRONE_011",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 20,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285
+   ],
+   "accuracy": 0.375
+  },
+  {
+   "video": "V_DRONE_051",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 19,
+   "wrong_frames": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.4062
+  },
+  {
+   "video": "V_DRONE_014",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 33,
+   "wrong": 19,
+   "wrong_frames": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    225,
+    240,
+    270,
+    285,
+    300,
+    315
+   ],
+   "accuracy": 0.4242
+  },
+  {
+   "video": "V_DRONE_018",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 18,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    45,
+    75,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.4375
+  },
+  {
+   "video": "V_DRONE_053",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 30,
+   "wrong": 16,
+   "wrong_frames": [
+    45,
+    60,
+    75,
+    90,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285
+   ],
+   "accuracy": 0.4667
+  },
+  {
+   "video": "V_AIRPLANE_018",
+   "class": "AIRPLANE",
+   "distance": "CLOSE",
+   "n": 32,
+   "wrong": 17,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    60,
+    75,
+    90,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    255,
+    270,
+    300
+   ],
+   "accuracy": 0.4688
+  },
+  {
+   "video": "V_DRONE_020",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 17,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    270
+   ],
+   "accuracy": 0.4688
+  },
+  {
+   "video": "V_DRONE_049",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 17,
+   "wrong_frames": [
+    30,
+    45,
+    60,
+    90,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.4688
+  },
+  {
+   "video": "V_DRONE_008",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 16,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    45,
+    120,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.5
+  },
+  {
+   "video": "V_DRONE_052",
+   "class": "DRONE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 15,
+   "wrong_frames": [
+    90,
+    105,
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.5312
+  },
+  {
+   "video": "V_DRONE_006",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 14,
+   "wrong_frames": [
+    30,
+    75,
+    90,
+    105,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.5625
+  },
+  {
+   "video": "V_DRONE_022",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 13,
+   "wrong_frames": [
+    0,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    165,
+    180,
+    270,
+    300
+   ],
+   "accuracy": 0.5938
+  },
+  {
+   "video": "V_DRONE_017",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 33,
+   "wrong": 13,
+   "wrong_frames": [
+    0,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    150,
+    180,
+    225,
+    270,
+    285,
+    315
+   ],
+   "accuracy": 0.6061
+  },
+  {
+   "video": "V_DRONE_003",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 12,
+   "wrong_frames": [
+    120,
+    135,
+    150,
+    165,
+    180,
+    195,
+    210,
+    225,
+    240,
+    255,
+    270,
+    300
+   ],
+   "accuracy": 0.625
+  },
+  {
+   "video": "V_BIRD_033",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 33,
+   "wrong": 12,
+   "wrong_frames": [
+    60,
+    75,
+    90,
+    105,
+    120,
+    135,
+    165,
+    195,
+    225,
+    255,
+    285,
+    315
+   ],
+   "accuracy": 0.6364
+  },
+  {
+   "video": "V_DRONE_024",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 10,
+   "wrong_frames": [
+    15,
+    45,
+    60,
+    90,
+    105,
+    120,
+    135,
+    225,
+    240,
+    285
+   ],
+   "accuracy": 0.6875
+  },
+  {
+   "video": "V_BIRD_034",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 33,
+   "wrong": 10,
+   "wrong_frames": [
+    15,
+    60,
+    150,
+    165,
+    180,
+    225,
+    240,
+    255,
+    270,
+    285
+   ],
+   "accuracy": 0.697
+  },
+  {
+   "video": "V_DRONE_015",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 33,
+   "wrong": 10,
+   "wrong_frames": [
+    15,
+    30,
+    60,
+    75,
+    150,
+    165,
+    180,
+    195,
+    255,
+    270
+   ],
+   "accuracy": 0.697
+  },
+  {
+   "video": "V_AIRPLANE_015",
+   "class": "AIRPLANE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 9,
+   "wrong_frames": [
+    15,
+    30,
+    45,
+    60,
+    75,
+    90,
+    105,
+    120,
+    135
+   ],
+   "accuracy": 0.7188
+  },
+  {
+   "video": "V_DRONE_007",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 9,
+   "wrong_frames": [
+    120,
+    165,
+    195,
+    210,
+    240,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.7188
+  },
+  {
+   "video": "V_HELICOPTER_014",
+   "class": "HELICOPTER",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 9,
+   "wrong_frames": [
+    0,
+    105,
+    165,
+    180,
+    210,
+    225,
+    255,
+    270,
+    285
+   ],
+   "accuracy": 0.7188
+  },
+  {
+   "video": "V_BIRD_032",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 33,
+   "wrong": 9,
+   "wrong_frames": [
+    60,
+    75,
+    120,
+    165,
+    210,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.7273
+  },
+  {
+   "video": "V_HELICOPTER_013",
+   "class": "HELICOPTER",
+   "distance": "MEDIUM",
+   "n": 30,
+   "wrong": 8,
+   "wrong_frames": [
+    75,
+    165,
+    210,
+    225,
+    240,
+    255,
+    270,
+    285
+   ],
+   "accuracy": 0.7333
+  },
+  {
+   "video": "V_AIRPLANE_031",
+   "class": "AIRPLANE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 8,
+   "wrong_frames": [
+    30,
+    150,
+    165,
+    195,
+    225,
+    255,
+    285,
+    300
+   ],
+   "accuracy": 0.75
+  },
+  {
+   "video": "V_BIRD_043",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 8,
+   "wrong_frames": [
+    0,
+    30,
+    45,
+    135,
+    150,
+    240,
+    255,
+    300
+   ],
+   "accuracy": 0.75
+  },
+  {
+   "video": "V_BIRD_031",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 7,
+   "wrong_frames": [
+    15,
+    30,
+    60,
+    120,
+    135,
+    150,
+    180
+   ],
+   "accuracy": 0.7812
+  },
+  {
+   "video": "V_DRONE_023",
+   "class": "DRONE",
+   "distance": "CLOSE",
+   "n": 32,
+   "wrong": 7,
+   "wrong_frames": [
+    15,
+    120,
+    150,
+    240,
+    255,
+    270,
+    285
+   ],
+   "accuracy": 0.7812
+  },
+  {
+   "video": "V_DRONE_025",
+   "class": "DRONE",
+   "distance": "CLOSE",
+   "n": 32,
+   "wrong": 7,
+   "wrong_frames": [
+    15,
+    30,
+    60,
+    75,
+    90,
+    120,
+    165
+   ],
+   "accuracy": 0.7812
+  },
+  {
+   "video": "V_BIRD_002",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 6,
+   "wrong_frames": [
+    195,
+    225,
+    255,
+    270,
+    285,
+    300
+   ],
+   "accuracy": 0.8125
+  },
+  {
+   "video": "V_DRONE_004",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 6,
+   "wrong_frames": [
+    0,
+    15,
+    90,
+    105,
+    135,
+    210
+   ],
+   "accuracy": 0.8125
+  },
+  {
+   "video": "V_DRONE_102",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 6,
+   "wrong_frames": [
+    165,
+    210,
+    225,
+    240,
+    255,
+    270
+   ],
+   "accuracy": 0.8125
+  },
+  {
+   "video": "V_AIRPLANE_008",
+   "class": "AIRPLANE",
+   "distance": "CLOSE",
+   "n": 33,
+   "wrong": 6,
+   "wrong_frames": [
+    0,
+    15,
+    30,
+    45,
+    90,
+    270
+   ],
+   "accuracy": 0.8182
+  },
+  {
+   "video": "V_AIRPLANE_057",
+   "class": "AIRPLANE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 4,
+   "wrong_frames": [
+    45,
+    105,
+    180,
+    270
+   ],
+   "accuracy": 0.875
+  },
+  {
+   "video": "V_BIRD_049",
+   "class": "BIRD",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 4,
+   "wrong_frames": [
+    105,
+    135,
+    255,
+    285
+   ],
+   "accuracy": 0.875
+  },
+  {
+   "video": "V_DRONE_016",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 4,
+   "wrong_frames": [
+    60,
+    75,
+    90,
+    105
+   ],
+   "accuracy": 0.875
+  },
+  {
+   "video": "V_AIRPLANE_013",
+   "class": "AIRPLANE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 3,
+   "wrong_frames": [
+    0,
+    15,
+    60
+   ],
+   "accuracy": 0.9062
+  },
+  {
+   "video": "V_AIRPLANE_022",
+   "class": "AIRPLANE",
+   "distance": "DISTANT",
+   "n": 32,
+   "wrong": 3,
+   "wrong_frames": [
+    180,
+    195,
+    210
+   ],
+   "accuracy": 0.9062
+  },
+  {
+   "video": "V_DRONE_005",
+   "class": "DRONE",
+   "distance": "CLOSE",
+   "n": 32,
+   "wrong": 3,
+   "wrong_frames": [
+    15,
+    30,
+    60
+   ],
+   "accuracy": 0.9062
+  },
+  {
+   "video": "V_DRONE_021",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 3,
+   "wrong_frames": [
+    105,
+    195,
+    210
+   ],
+   "accuracy": 0.9062
+  },
+  {
+   "video": "V_HELICOPTER_001",
+   "class": "HELICOPTER",
+   "distance": "CLOSE",
+   "n": 25,
+   "wrong": 2,
+   "wrong_frames": [
+    0,
+    105
+   ],
+   "accuracy": 0.92
+  },
+  {
+   "video": "V_BIRD_046",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 2,
+   "wrong_frames": [
+    0,
+    255
+   ],
+   "accuracy": 0.9375
+  },
+  {
+   "video": "V_BIRD_013",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 33,
+   "wrong": 2,
+   "wrong_frames": [
+    240,
+    255
+   ],
+   "accuracy": 0.9394
+  },
+  {
+   "video": "V_DRONE_013",
+   "class": "DRONE",
+   "distance": "CLOSE",
+   "n": 33,
+   "wrong": 2,
+   "wrong_frames": [
+    270,
+    285
+   ],
+   "accuracy": 0.9394
+  },
+  {
+   "video": "V_BIRD_045",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 1,
+   "wrong_frames": [
+    225
+   ],
+   "accuracy": 0.9688
+  },
+  {
+   "video": "V_DRONE_001",
+   "class": "DRONE",
+   "distance": "CLOSE",
+   "n": 32,
+   "wrong": 1,
+   "wrong_frames": [
+    270
+   ],
+   "accuracy": 0.9688
+  },
+  {
+   "video": "V_DRONE_012",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 33,
+   "wrong": 1,
+   "wrong_frames": [
+    45
+   ],
+   "accuracy": 0.9697
+  },
+  {
+   "video": "V_BIRD_047",
+   "class": "BIRD",
+   "distance": "MEDIUM",
+   "n": 42,
+   "wrong": 0,
+   "wrong_frames": [],
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_AIRPLANE_027",
+   "class": "AIRPLANE",
+   "distance": "DISTANT",
+   "n": 33,
+   "wrong": 0,
+   "wrong_frames": [],
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_AIRPLANE_033",
+   "class": "AIRPLANE",
+   "distance": "DISTANT",
+   "n": 33,
+   "wrong": 0,
+   "wrong_frames": [],
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_BIRD_030",
+   "class": "BIRD",
+   "distance": "DISTANT",
+   "n": 33,
+   "wrong": 0,
+   "wrong_frames": [],
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_AIRPLANE_037",
+   "class": "AIRPLANE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 0,
+   "wrong_frames": [],
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_DRONE_002",
+   "class": "DRONE",
+   "distance": "MEDIUM",
+   "n": 32,
+   "wrong": 0,
+   "wrong_frames": [],
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_DRONE_040",
+   "class": "DRONE",
+   "distance": "CLOSE",
+   "n": 32,
+   "wrong": 0,
+   "wrong_frames": [],
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_HELICOPTER_002",
+   "class": "HELICOPTER",
+   "distance": "CLOSE",
+   "n": 32,
+   "wrong": 0,
+   "wrong_frames": [],
+   "accuracy": 1.0
+  }
+ ],
+ "videos_all_correct": 8,
+ "videos_total": 58
+}
