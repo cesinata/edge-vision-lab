@@ -1,0 +1,29 @@
+edge-vision-lab
+
+The MIT licence in LICENSE covers the code and original text and drawings in
+this repository. It does not cover the data or third-party models named below.
+
+Dataset (not redistributed)
+  Svanstrom F., Alonso-Fernandez F., Englund C. "A dataset for multi-sensor
+  drone detection". Data in Brief 39 (2021) 107521. DOI 10.1016/j.dib.2021.107521.
+  Data: Zenodo, DOI 10.5281/zenodo.5500576 (v1.0.0).
+  Licence status: the dataset repository's LICENSE file is CC0 1.0 Universal and
+  its README says "Free to download, use and edit"; the Zenodo record says
+  "Other (Open)". Written confirmation from the authors has been requested and
+  has not been received. Until it is, this repository contains no frames, crops,
+  sample images, split files derived from the data, or model weights trained on
+  it. `python train/download_data.py` fetches the data from Zenodo into data/,
+  which is gitignored.
+
+Pre-trained starting weights (not redistributed)
+  Training starts from torchvision's ImageNet weights for MobileNetV3-Small,
+  downloaded at run time from download.pytorch.org. They are not stored in this
+  repository. Their licence terms have not been verified (see docs/todo.md).
+
+Third-party pre-trained model used by the website demo
+  See docs/sources.md for its name, source, licence and size. It was not trained
+  by this project.
+
+Out-of-domain test images (planned, not downloaded)
+  Open Images V7: annotations CC BY 4.0 (Google LLC); images listed as CC BY 2.0
+  with per-image authors. A download script would write an attribution file.
