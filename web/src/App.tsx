@@ -1,27 +1,26 @@
-import { useEffect, useState, type ReactElement } from 'react';
-import { Board } from './pages/Board';
-import { Demo } from './pages/Demo';
-import { Failures } from './pages/Failures';
+import { useEffect, useState } from 'react';
+import { COPY } from './content/copy';
 import { Glossary } from './pages/Glossary';
-import { Lessons } from './pages/Lessons';
-import { Memory } from './pages/Memory';
-import { Overview } from './pages/Overview';
-import { States } from './pages/States';
+import { Home } from './pages/Home';
+import { LessonPage } from './pages/Lesson';
 
-const ROUTES: { path: string; label: string; page: () => ReactElement }[] = [
-  { path: '/', label: 'Overview', page: Overview },
-  { path: '/demo', label: 'Try it', page: Demo },
-  { path: '/lessons', label: 'Lessons', page: Lessons },
-  { path: '/board', label: 'Board', page: Board },
-  { path: '/memory', label: 'Memory budget', page: Memory },
-  { path: '/states', label: 'State machine', page: States },
-  { path: '/failures', label: 'Failure gallery', page: Failures },
-  { path: '/glossary', label: 'Glossary and sources', page: Glossary },
-];
+const REPO = 'https://github.com/cesinata/edge-vision-lab';
 
-function currentPath(): string {
-  const h = window.location.hash.replace(/^#/, '');
-  return ROUTES.some((r) => r.path === h) ? h : '/';
+type Route = { page: 'home'; scroll: string | null } | { page: 'lesson'; n: number } | { page: 'glossary' };
+
+// Hash routes. Section links keep the home page and scroll to the section. Old route names still work.
+const SECTIONS: Record<string, string> = { '/learn': 'learn', '/demo': 'demo', '/lessons': 'lessons', '/results': 'results', '/board': 'learn', '/lessons-old': 'lessons' };
+const LEGACY: Record<string, Route> = {
+  '/memory': { page: 'lesson', n: 6 }, '/states': { page: 'lesson', n: 6 }, '/failures': { page: 'lesson', n: 4 }, '/glossary': { page: 'glossary' },
+};
+
+function parse(): Route {
+  const h = window.location.hash.replace(/^#/, '') || '/';
+  const m = h.match(/^\/lesson\/([1-6])$/);
+  if (m) return { page: 'lesson', n: Number(m[1]) };
+  if (LEGACY[h]) return LEGACY[h];
+  if (SECTIONS[h]) return { page: 'home', scroll: SECTIONS[h] };
+  return { page: 'home', scroll: null };
 }
 
 type Theme = 'system' | 'light' | 'dark';
@@ -38,15 +37,11 @@ function readTheme(): Theme {
 }
 
 export function App() {
-  const [path, setPath] = useState(currentPath());
+  const [route, setRoute] = useState<Route>(parse());
   const [theme, setTheme] = useState<Theme>(readTheme());
 
   useEffect(() => {
-    const onHash = () => {
-      setPath(currentPath());
-      window.scrollTo(0, 0);
-      document.getElementById('main')?.focus();
-    };
+    const onHash = () => setRoute(parse());
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
@@ -62,41 +57,51 @@ export function App() {
     }
   }, [theme]);
 
-  const route = ROUTES.find((r) => r.path === path) ?? ROUTES[0];
-  const Page = route.page;
-  const next: Record<Theme, Theme> = { system: 'light', light: 'dark', dark: 'system' };
-
   useEffect(() => {
-    document.title = route.path === '/' ? 'edge-vision-lab' : `${route.label} | edge-vision-lab`;
+    if (route.page === 'home' && route.scroll) {
+      document.getElementById(route.scroll)?.scrollIntoView();
+    } else {
+      window.scrollTo(0, 0);
+      document.getElementById('main')?.focus({ preventScroll: true });
+    }
+    document.title = route.page === 'lesson' ? `${COPY.lessons.items[route.n - 1].title} | ${COPY.siteName}` : route.page === 'glossary' ? `Glossary and sources | ${COPY.siteName}` : COPY.siteName;
   }, [route]);
+
+  const next: Record<Theme, Theme> = { system: 'light', light: 'dark', dark: 'system' };
+  const links = [
+    { label: COPY.nav[0], href: '#/learn', key: 'learn' },
+    { label: COPY.nav[1], href: '#/demo', key: 'demo' },
+    { label: COPY.nav[2], href: '#/results', key: 'results' },
+  ];
 
   return (
     <>
-      <a className="skip" href="#main">Skip to content</a>
+      <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Skip to content</a>
       <header className="site">
-        <button className="theme" onClick={() => setTheme(next[theme])} aria-label={`Colour theme: ${theme}. Activate to change.`}>
-          Theme: {theme}
-        </button>
-        <div className="brand"><span className="dot" aria-hidden="true" /> edge-vision-lab</div>
-        <nav aria-label="Main">
-          <ul>
-            {ROUTES.map((r) => (
-              <li key={r.path}>
-                <a href={`#${r.path}`} aria-current={r.path === path ? 'page' : undefined}>{r.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="wrap bar-top">
+          <a className="brand" href="#/" aria-label={`${COPY.siteName}, home`}>
+            <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <rect x="2" y="2" width="30" height="30" rx="4" /><circle cx="17" cy="17" r="7" /><circle cx="17" cy="17" r="2.5" fill="var(--mark)" /><path d="M2 10H6M2 24H6M28 10H32M28 24H32" />
+            </svg>
+            <span>{COPY.siteName}</span>
+          </a>
+          <nav aria-label="Main">
+            <ul>
+              {links.map((l) => <li key={l.key}><a href={l.href} aria-current={route.page === 'home' && route.scroll === l.key ? 'location' : undefined}>{l.label}</a></li>)}
+              <li><a className="ext" href={REPO}>{COPY.nav[3]}</a></li>
+              <li><button className="theme" onClick={() => setTheme(next[theme])} aria-label={`Colour theme: ${theme}. Activate to change.`}>Theme: {theme}</button></li>
+            </ul>
+          </nav>
+        </div>
       </header>
-      <main id="main" tabIndex={-1}>
-        <Page />
+      <main id="main" tabIndex={-1} style={{ outline: 'none' }}>
+        {route.page === 'home' ? <Home /> : route.page === 'lesson' ? <LessonPage n={route.n} /> : <Glossary />}
       </main>
-      <footer>
-        <p>
-          AI assistance (Claude) was used to draft and review code and text. The repository owner ran the
-          experiments; every number on this site comes from a run in the repository and carries a label saying
-          how it was produced. Nothing here was measured on a microcontroller board.
-        </p>
+      <footer className="site">
+        <div className="wrap">
+          <p>{COPY.footer}</p>
+          <p><a href="#/glossary">Glossary and sources</a></p>
+        </div>
       </footer>
     </>
   );

@@ -112,3 +112,31 @@ The int8 test accuracy being slightly above float32's (0.758 against 0.736) is w
 
 ## D29. Evaluation reporting choices
 Bootstrap intervals use 2000 replicates, seed 0, resampling whole videos. They are labelled optimistic because videos from one scene are not independent. The out-of-domain test set was not built (HANDOFF did not include it); every result is in-domain.
+
+
+## D30. Redesign: Option A, Datasheet (branch `redesign-a`)
+Restyled the site and the README figures to a datasheet look (white page, navy ink, grid-paper panels, fine line drawings, one yellow highlight), replaced all home-page text with `docs/site-copy.md`, and added fine-line illustrations. The model, data, evaluation, firmware logic and every number are unchanged. The site is now one home page (hero, about, pipeline, split, board anatomy, live demo, lessons, results) plus six lesson pages and the glossary, with hash routes. Section links (`#/learn`, `#/demo`, `#/lessons`, `#/results`) scroll the home page; the old routes (`#/memory`, `#/states`, `#/failures`, `#/glossary`) still work. The earlier Board, Memory, State machine and Failure gallery pages became parts of lessons 4 to 6; the board explainer became the numbered anatomy figure from the copy. This replaces the Pastel Paper style (D19, `docs/illustration-style.md`).
+
+## D31. Copy: generated, checked, one edit, one flag
+`web/src/content/copy.ts` is generated from `docs/site-copy.md` by `scripts/make_site_copy.py`, so no wording is retyped. `scripts/check_site_copy.py` found all 111 pieces of copy in both `copy.ts` and the built JavaScript.
+- **Edit made to the copy:** "a larger model made by someone else" became "a model made by someone else" in the General detector line. The file sizes do not support "larger": the detector is 3,659,407 bytes (3,573.6 KB), this project's model is 3,182.6 KB as int8 and 5,950.5 KB as float32.
+- **Number check:** the copy's one number, drone recall 0.465, matches `results/eval_torch.json` (0.4646 rounds to 0.465). The site fills it from that file, and the generator fails if they ever differ.
+- **Flag for the owner, left as written:** the About copy says the model "is sized for STM32-class chips". Nothing measured here supports or contradicts that (no run on a board; the int8 model is 3.2 MB and the activation lower bound is 441 KB, against many different STM32 parts). It is your wording, so I kept it, but `CLAUDE.md` says to make no claims about the board. See `docs/todo.md`.
+
+## D32. Words that are not from the copy file
+`docs/site-copy.md` covers the home page and the lesson titles and blurbs, not lesson bodies. Lesson page text, tool labels (sliders, tables, buttons), status messages and the glossary reuse the earlier site's text, restyled, plus a few plain sentences I wrote around the interactive tools. The UI strings "Start webcam", "Stop", "or upload an image:", "Theme: ...", "Home", "Previous", "Next" and "Glossary and sources" are carried over from the earlier site. The owner should read the lesson pages (`web/src/pages/Lesson.tsx` and the components it uses).
+
+## D33. Illustrations
+All drawings are React components in `web/src/illustrations/`, each under 6 KB, stroke `currentColor`, original, with a battery pack where the mock-up had a solar panel. Labels inside drawings use a per-drawing size (CSS variables) that is larger on phones so they stay readable when the drawing shrinks. Known limit: the split diagram's legend is about 12 px on a 375 px phone and other in-drawing labels are 12 to 14 px; all HTML text is at least 12 px (checked with a script on lesson 6 at 375 px).
+
+## D34. Contrast and accessibility checks
+- Site tokens: `scripts/check_contrast.py` checked 30 pairs across light, system dark and toggle dark: 0 failures, lowest ratio 7.14 (`results/site_contrast.json`).
+- README figures: `scripts/make_figures.py` checked 44 text and background pairs: 0 failures, lowest ratio 7.14 (`results/contrast_check.json`).
+- Playwright (system Chrome, `playwright-core` run from outside the repo): home and lesson 4 at 1280 and 375 px, light and dark: no horizontal scroll, no console errors. Keyboard focus on a board part highlights its table row. The in-browser self-test (`?selftest=1`) still loads the runtime and the detector. Screenshots were looked at and not committed.
+- Yellow is only a fill; the only text on it is the dark ink.
+
+## D35. Fonts, size and housekeeping
+- IBM Plex Sans and Mono are self-hosted (`@fontsource`, latin subset, SIL OFL 1.1; licence texts in `web/public/licenses/`, listed in `NOTICE` and `docs/sources.md`). The font files total 139 kB (woff2, decimal); the first-load script is 354.7 kB and the CSS 13.3 kB.
+- The reference mock-up `web/design/option-a-reference.html` stays local and is excluded from git (it contains a solar-panel drawing and a Google Fonts link). `scripts/preflight.sh` now also checks that no design-reference file or template marker is in `web/dist`, and that "solar" and "logo" appear nowhere in the README, site source, figures or build.
+- The README's site screenshot showed the old design, so it was removed (and `docs/img/site-overview.png` deleted). A new one is not committed, per the rule not to commit screenshots; add one after you approve the look.
+- The README figures were redrawn in this style (`pipeline`, `split-by-scene`, `board-data-path`, `results`); the firmware state diagram stays Mermaid.

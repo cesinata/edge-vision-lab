@@ -5,3 +5,6 @@ export const MODEL_UNPUBLISHED_REASON =
   'The model was trained on a dataset whose licence has not yet been confirmed in writing by its authors, so the weights are not released.';
 export const PROJECT_MODEL_URL = 'models/guardian_int8.onnx';
 export const DETECTOR_URL = 'models/yolox_nano.onnx';
+
+// File size of the third-party detector, as published in the YOLOX release and checked by scripts/fetch_web_assets.sh.
+export const DETECTOR_BYTES = 3659407;

@@ -27,3 +27,7 @@ Third-party pre-trained model used by the website demo
 Out-of-domain test images (planned, not downloaded)
   Open Images V7: annotations CC BY 4.0 (Google LLC); images listed as CC BY 2.0
   with per-image authors. A download script would write an attribution file.
+
+Fonts shipped with the website (redistributed)
+  IBM Plex Sans and IBM Plex Mono, Copyright 2019 IBM Corp., SIL Open Font Licence 1.1.
+  Texts: web/public/licenses/ (also served with the site under licenses/).

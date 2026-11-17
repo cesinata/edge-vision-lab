@@ -6,11 +6,9 @@ A small bird, drone and neither image classifier, trained on a laptop, quantised
 
 **Live site:** https://cesinata.github.io/edge-vision-lab/ (this link works only after the first GitHub Pages deploy: Settings, Pages, Source: GitHub Actions; it has not been deployed yet). A walk-through of the pipeline with a webcam demo of a general detector, a board explainer, a memory-budget calculator and a state-machine viewer. The site's own copy is in `web/`.
 
-<img src="docs/img/site-overview.png" alt="Screenshot of the website's overview page in light mode: the title, a note that the model is not published yet, six pipeline tiles and a table of per-class test results." width="480">
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/pipeline-dark.svg">
-  <img src="docs/img/pipeline.svg" alt="Six numbered tiles in two rows: data, split, train, evaluate, quantise and firmware, each with a short caption.">
+  <img src="docs/img/pipeline.svg" alt="Six numbered cells in a row: data, split, train, evaluate, quantise and firmware, each with a small line icon and a short caption.">
 </picture>
 
 This is **image classification on crops**, not object detection: the model sees one cropped image and names its class. No microcontroller board was used. Everything about a board is a generic explanation, and any number about one is `not measured on hardware`.
@@ -76,7 +74,7 @@ Size ratio float32 / int8: 1.87 (measured (host CPU)). Activation memory lower b
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/results-dark.svg">
-  <img src="docs/img/results.svg" alt="Left, a three by three confusion matrix of true class against predicted class on the test split with counts. Right, bars comparing float32 and int8 model size and test accuracy.">
+  <img src="docs/img/results.svg" alt="Left, a three by three confusion matrix of real class against predicted class on the test split, with counts and the diagonal marked. Right, bars comparing float32 and partly int8 model size and test accuracy.">
 </picture>
 
 ## What I found
@@ -96,6 +94,15 @@ Size ratio float32 / int8: 1.87 (measured (host CPU)). Activation memory lower b
 6. **The device logic is tested without a board.** 348 checks pass, including a watchdog stall, a fault in every state and battery hysteresis, and line coverage is 96.43%. Two deliberate breakages of the code were caught by the tests. This says nothing about real timing, interrupts or hardware.
 
 <!-- findings:end -->
+
+## Why the split is by scene
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/split-by-scene-dark.svg">
+  <img src="docs/img/split-by-scene.svg" alt="Six scenes of four frames each, every scene entirely train, validation or test, beside a random split box that mixes train and test frames from the same scenes.">
+</picture>
+
+Frames from one video look almost identical, so a random frame split leaks the same scene into training and testing. This project assigns whole scenes to one side.
 
 ## How to run
 
@@ -161,7 +168,7 @@ stateDiagram-v2
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/img/board-data-path-dark.svg">
-  <img src="docs/img/board-data-path.svg" alt="A generic vision board: a camera feeds a microcontroller in the middle, which exchanges tensors with an optional accelerator, reads and writes memory, and sends results out over a host link. A strip says nothing here is measured on hardware.">
+  <img src="docs/img/board-data-path.svg" alt="A generic vision board drawn in fine lines: a camera feeds a microcontroller in the middle, which exchanges tensors with an optional accelerator, reads and writes memory, and sends results out over a host link. A strip says nothing here is measured on hardware.">
 </picture>
 
 | Path | What it holds |

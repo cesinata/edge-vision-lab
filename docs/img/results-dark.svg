@@ -1,65 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 868 560" width="868" height="560" role="img" aria-labelledby="t d" font-family='ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace'>
-<title id="t">Results: confusion matrix and float versus int8</title>
-<desc id="d">Left: a three by three confusion matrix of true class against predicted class on the test split, with counts. Right: model size and test accuracy for the float32 and int8 ONNX models. Every number is labelled measured on the host CPU.</desc>
-<rect x="0" y="0" width="868" height="560" rx="28" fill="#1F1B26"/>
-<text x="32" y="46" font-size="20" font-weight="bold" fill="#F1EEF5" text-anchor="start">Results on the test split</text>
-<rect x="32" y="72" width="400" height="400" rx="22" fill="#3A3150"/>
-<text x="52" y="104" font-size="15" font-weight="bold" fill="#F1EEF5" text-anchor="start">Confusion matrix (crops)</text>
-<text x="270.0" y="140" font-size="12" font-weight="normal" fill="#BDB5C9" text-anchor="middle">predicted</text>
-<text x="52" y="294.0" font-size="12" font-weight="normal" fill="#BDB5C9" text-anchor="start">true</text>
-<text x="190.0" y="160" font-size="12" font-weight="bold" fill="#F1EEF5" text-anchor="middle">bird</text>
-<text x="138" y="214.0" font-size="12" font-weight="bold" fill="#F1EEF5" text-anchor="end">bird</text>
-<text x="270.0" y="160" font-size="12" font-weight="bold" fill="#F1EEF5" text-anchor="middle">drone</text>
-<text x="138" y="294.0" font-size="12" font-weight="bold" fill="#F1EEF5" text-anchor="end">drone</text>
-<text x="350.0" y="160" font-size="12" font-weight="bold" fill="#F1EEF5" text-anchor="middle">neither</text>
-<text x="138" y="374.0" font-size="12" font-weight="bold" fill="#F1EEF5" text-anchor="end">neither</text>
-<rect x="154" y="174" width="72" height="72" rx="16" fill="#CDBBFF" fill-opacity="0.52"/>
-<rect x="166" y="194" width="48" height="28" rx="14" fill="#292433"/>
-<text x="190.0" y="214" font-size="14" font-weight="bold" fill="#F1EEF5" text-anchor="middle">206</text>
-<rect x="234" y="174" width="72" height="72" rx="16" fill="#CDBBFF" fill-opacity="0.10"/>
-<rect x="246" y="194" width="48" height="28" rx="14" fill="#292433"/>
-<text x="270.0" y="214" font-size="14" font-weight="bold" fill="#F1EEF5" text-anchor="middle">1</text>
-<rect x="314" y="174" width="72" height="72" rx="16" fill="#CDBBFF" fill-opacity="0.22"/>
-<rect x="326" y="194" width="48" height="28" rx="14" fill="#292433"/>
-<text x="350.0" y="214" font-size="14" font-weight="bold" fill="#F1EEF5" text-anchor="middle">60</text>
-<rect x="154" y="254" width="72" height="72" rx="16" fill="#CDBBFF" fill-opacity="0.19"/>
-<rect x="166" y="274" width="48" height="28" rx="14" fill="#292433"/>
-<text x="190.0" y="294" font-size="14" font-weight="bold" fill="#F1EEF5" text-anchor="middle">105</text>
-<rect x="234" y="254" width="72" height="72" rx="16" fill="#CDBBFF" fill-opacity="0.36"/>
-<rect x="246" y="274" width="48" height="28" rx="14" fill="#292433"/>
-<text x="270.0" y="294" font-size="14" font-weight="bold" fill="#F1EEF5" text-anchor="middle">315</text>
-<rect x="314" y="254" width="72" height="72" rx="16" fill="#CDBBFF" fill-opacity="0.31"/>
-<rect x="326" y="274" width="48" height="28" rx="14" fill="#292433"/>
-<text x="350.0" y="294" font-size="14" font-weight="bold" fill="#F1EEF5" text-anchor="middle">258</text>
-<rect x="154" y="334" width="72" height="72" rx="16" fill="#CDBBFF" fill-opacity="0.12"/>
-<rect x="166" y="354" width="48" height="28" rx="14" fill="#292433"/>
-<text x="190.0" y="374" font-size="14" font-weight="bold" fill="#F1EEF5" text-anchor="middle">32</text>
-<rect x="234" y="334" width="72" height="72" rx="16" fill="#CDBBFF" fill-opacity="0.12"/>
-<rect x="246" y="354" width="48" height="28" rx="14" fill="#292433"/>
-<text x="270.0" y="374" font-size="14" font-weight="bold" fill="#F1EEF5" text-anchor="middle">38</text>
-<rect x="314" y="334" width="72" height="72" rx="16" fill="#CDBBFF" fill-opacity="0.61"/>
-<rect x="326" y="354" width="48" height="28" rx="14" fill="#292433"/>
-<text x="350.0" y="374" font-size="14" font-weight="bold" fill="#F1EEF5" text-anchor="middle">855</text>
-<text x="52" y="450" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">1870 crops, 58 videos. measured (host CPU)</text>
-<rect x="452" y="72" width="384" height="400" rx="22" fill="#25423A"/>
-<text x="472" y="104" font-size="15" font-weight="bold" fill="#F1EEF5" text-anchor="start">float32 vs int8 (ONNX)</text>
-<text x="472" y="140" font-size="13" font-weight="bold" fill="#BDB5C9" text-anchor="start">Size</text>
-<text x="472" y="160" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">float32</text>
-<rect x="472" y="168" width="240.0" height="22" rx="11" fill="#B7A0F0"/>
-<text x="720.0" y="185" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">5951 KB</text>
-<text x="472" y="214" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">int8</text>
-<rect x="472" y="222" width="128.36315420643203" height="22" rx="11" fill="#B7A0F0"/>
-<text x="608.363154206432" y="239" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">3183 KB</text>
-<text x="472" y="290" font-size="13" font-weight="bold" fill="#BDB5C9" text-anchor="start">Test accuracy (crop level)</text>
-<text x="472" y="310" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">float32</text>
-<rect x="472" y="318" width="176.592" height="22" rx="11" fill="#B7A0F0"/>
-<text x="656.592" y="335" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">0.736</text>
-<text x="472" y="364" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">int8</text>
-<rect x="472" y="372" width="181.992" height="22" rx="11" fill="#B7A0F0"/>
-<text x="661.992" y="389" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">0.758</text>
-<text x="472" y="440" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">measured (host CPU). Accuracy bars start at 0.</text>
-<rect x="32" y="488" width="804" height="52" rx="22" fill="#292433"/>
-<circle cx="62" cy="514" r="8" fill="#CDBBFF"/>
-<text x="82" y="512" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">Small, noisy test set from few scenes. Nothing here was run on a board:</text>
-<text x="82" y="530" font-size="12" font-weight="normal" fill="#F1EEF5" text-anchor="start">device latency, power and arena size are not measured on hardware.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 492" width="880" height="492" role="img" aria-labelledby="t d" font-family='ui-monospace, "SF Mono", Menlo, Consolas, monospace' fill="none" stroke="#8FD3F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<title id="t">Results: confusion matrix and float32 versus int8</title>
+<desc id="d">Left: a three by three confusion matrix of real class against predicted class on the test split, with counts and the diagonal marked. Right: model size and test accuracy for the float32 and partly int8 ONNX models. Every number is measured on the host CPU.</desc>
+<rect x="0.75" y="0.75" width="878.5" height="490.5" rx="6" fill="#0B1A2E"/>
+<defs><pattern id="hatch2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#8FD3F4" stroke-width="2"/></pattern></defs>
+<text x="28" y="34" font-size="12" font-weight="500" fill="#A8BCD6" stroke="none" text-anchor="start" letter-spacing="0.72">FIG. 5 · RESULTS ON THE TEST SPLIT</text>
+<text x="28" y="64" font-size="20" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="start">What the test showed</text>
+<rect x="28" y="88" width="400" height="308" rx="6" fill="#10243F" stroke="#EAF2FB"/>
+<text x="44" y="114" font-size="14" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="start">Confusion matrix (crops)</text>
+<text x="278.0" y="138" font-size="12" font-weight="500" fill="#A8BCD6" stroke="none" text-anchor="middle">model said</text>
+<text x="44" y="259.0" font-size="12" font-weight="500" fill="#A8BCD6" stroke="none" text-anchor="start">real</text>
+<text x="194.0" y="158" font-size="12" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="middle">bird</text>
+<text x="142" y="201.0" font-size="12" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="end">bird</text>
+<text x="278.0" y="158" font-size="12" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="middle">drone</text>
+<text x="142" y="259.0" font-size="12" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="end">drone</text>
+<text x="362.0" y="158" font-size="12" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="middle">neither</text>
+<text x="142" y="317.0" font-size="12" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="end">neither</text>
+<rect x="152" y="168" width="84" height="58" rx="0" fill="#FFD200" stroke="#EAF2FB" stroke-width="2.5"/>
+<text x="194.0" y="203.0" font-size="16" font-weight="600" fill="#03234B" stroke="none" text-anchor="middle">206</text>
+<rect x="236" y="168" width="84" height="58" rx="0" fill="#0B1A2E" stroke="#EAF2FB"/>
+<text x="278.0" y="203.0" font-size="16" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="middle">1</text>
+<rect x="320" y="168" width="84" height="58" rx="0" fill="#0B1A2E" stroke="#EAF2FB"/>
+<text x="362.0" y="203.0" font-size="16" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="middle">60</text>
+<rect x="152" y="226" width="84" height="58" rx="0" fill="#0B1A2E" stroke="#EAF2FB"/>
+<text x="194.0" y="261.0" font-size="16" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="middle">105</text>
+<rect x="236" y="226" width="84" height="58" rx="0" fill="#FFD200" stroke="#EAF2FB" stroke-width="2.5"/>
+<text x="278.0" y="261.0" font-size="16" font-weight="600" fill="#03234B" stroke="none" text-anchor="middle">315</text>
+<rect x="320" y="226" width="84" height="58" rx="0" fill="#0B1A2E" stroke="#EAF2FB"/>
+<text x="362.0" y="261.0" font-size="16" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="middle">258</text>
+<rect x="152" y="284" width="84" height="58" rx="0" fill="#0B1A2E" stroke="#EAF2FB"/>
+<text x="194.0" y="319.0" font-size="16" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="middle">32</text>
+<rect x="236" y="284" width="84" height="58" rx="0" fill="#0B1A2E" stroke="#EAF2FB"/>
+<text x="278.0" y="319.0" font-size="16" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="middle">38</text>
+<rect x="320" y="284" width="84" height="58" rx="0" fill="#FFD200" stroke="#EAF2FB" stroke-width="2.5"/>
+<text x="362.0" y="319.0" font-size="16" font-weight="600" fill="#03234B" stroke="none" text-anchor="middle">855</text>
+<text x="44" y="372" font-size="12" font-weight="500" fill="#C9D8EA" stroke="none" text-anchor="start">1870 crops, 58 videos. measured (host CPU)</text>
+<rect x="452" y="88" width="400" height="308" rx="6" fill="#10243F" stroke="#EAF2FB"/>
+<text x="468" y="114" font-size="14" font-weight="600" fill="#EAF2FB" stroke="none" text-anchor="start">float32 vs partly int8 (ONNX)</text>
+<text x="468" y="144" font-size="12" font-weight="600" fill="#A8BCD6" stroke="none" text-anchor="start">Model size (KB)</text>
+<text x="468" y="164" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">float32</text>
+<rect x="468" y="172" width="230.0" height="22" fill="#EAF2FB"/>
+<text x="706.0" y="189" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">5,951</text>
+<text x="468" y="212" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">partly int8</text>
+<rect x="468" y="220" width="123.0" height="22" fill="url(#hatch2)"/>
+<text x="599.0146894478307" y="237" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">3,183</text>
+<text x="468" y="268" font-size="12" font-weight="600" fill="#A8BCD6" stroke="none" text-anchor="start">Test accuracy (crop level, bars start at 0)</text>
+<text x="468" y="288" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">float32</text>
+<rect x="468" y="296" width="169.2" height="22" fill="#EAF2FB"/>
+<text x="645.234" y="313" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">0.736</text>
+<text x="468" y="336" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">partly int8</text>
+<rect x="468" y="344" width="174.4" height="22" fill="url(#hatch2)"/>
+<text x="650.409" y="361" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">0.758</text>
+<text x="468" y="384" font-size="12" font-weight="500" fill="#C9D8EA" stroke="none" text-anchor="start">measured (host CPU)</text>
+<rect x="28" y="412" width="824" height="62" rx="6" fill="#0B1A2E" stroke="#EAF2FB"/>
+<circle cx="50" cy="434" r="6" fill="#FFD200"/>
+<text x="66" y="438" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">Small, noisy test set from few scenes.</text>
+<text x="66" y="456" font-size="12" font-weight="500" fill="#EAF2FB" stroke="none" text-anchor="start">Nothing was run on a board: latency, power and arena size are not measured on hardware.</text>
 </svg>
