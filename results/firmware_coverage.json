@@ -1,0 +1,14 @@
+{
+ "label": "measured (host CPU)",
+ "command": "cmake -S firmware -B build-cov -DGUARDIAN_COVERAGE=ON && cmake --build build-cov && ./build-cov/test_guardian && cd build-cov && xcrun llvm-cov gcov -b CMakeFiles/guardian.dir/src/guardian.cpp.gcda",
+ "tool": "llvm-cov gcov from Apple clang (Apple clang version 17.0.0 (clang-1700.6.3.2))",
+ "file": "firmware/src/guardian.cpp",
+ "checks": 348,
+ "check_failures": 0,
+ "lines_executed_percent": 96.43,
+ "lines_total": 140,
+ "branches_executed_percent": 100.0,
+ "branches_taken_at_least_once_percent": 74.59,
+ "uncovered_lines": "2 defensive return \"?\" fallbacks, 1 unreachable case label, 2 compiler artefacts (function end, lambda end)",
+ "mutants_caught": "2 of 2 tried (changing >= to > on the alert threshold; disabling the watchdog)"
+}
