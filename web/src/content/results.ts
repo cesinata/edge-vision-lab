@@ -40,6 +40,21 @@ export interface EvalResult {
   subtype_vs_predicted: { cols_pred: string[]; rows: Record<string, number[]> };
   subtype_accuracy: Record<string, { accuracy: number; n_crops: number; n_videos: number; ci95: [number, number] }>;
   videos_per_class: Record<string, number>;
+  threshold: {
+    average_precision_test: number;
+    pr_curve_test: { threshold: number; precision: number; recall: number }[];
+    argmax_rule: OperatingPoint;
+    firmware_default: OperatingPoint;
+    chosen: OperatingPoint | null;
+  };
+}
+
+export interface OperatingPoint {
+  threshold: number;
+  precision: number | null;
+  recall: number | null;
+  predicted_positive: number;
+  true_positive: number;
 }
 
 export interface BenchResult {
@@ -70,6 +85,7 @@ export interface SplitSummary {
   largest_cluster_sizes: number[];
   videos_per_class: Record<string, number>;
   videos_per_class_per_split: Record<string, Record<string, number>>;
+  clusters_per_class_per_split: Record<string, Record<string, number>>;
   clusters_touched_per_class: Record<string, number>;
   cross_split_video_pairs_within_threshold: Record<string, number>;
   phash_threshold_bits: number;
