@@ -1,0 +1,966 @@
+{
+ "label": "measured (host CPU)",
+ "command": "python train/evaluate.py --onnx models/model_int8.onnx --tag onnx_int8",
+ "split": "test",
+ "n_crops": 1870,
+ "n_videos": 58,
+ "videos_per_class": {
+  "AIRPLANE": 10,
+  "BIRD": 12,
+  "DRONE": 32,
+  "HELICOPTER": 4
+ },
+ "crops_per_subtype": {
+  "airplane": 213,
+  "background": 629,
+  "bird": 267,
+  "drone": 678,
+  "helicopter": 83
+ },
+ "bootstrap": {
+  "method": "resample whole videos with replacement",
+  "replicates": 2000,
+  "seed": 0,
+  "note": "treats videos as independent; videos from one scene are not, so intervals are optimistic"
+ },
+ "accuracy": 0.7583,
+ "macro_f1": 0.7043,
+ "macro_f1_ci95": [
+  0.6182,
+  0.7718
+ ],
+ "per_class": {
+  "bird": {
+   "support": 267,
+   "precision": 0.482,
+   "precision_ci95": [
+    0.2697,
+    0.6636
+   ],
+   "recall": 0.7528,
+   "recall_ci95": [
+    0.5924,
+    0.8867
+   ],
+   "f1": 0.5877,
+   "f1_ci95": [
+    0.3837,
+    0.727
+   ]
+  },
+  "drone": {
+   "support": 678,
+   "precision": 0.9472,
+   "precision_ci95": [
+    0.8907,
+    0.9853
+   ],
+   "recall": 0.5029,
+   "recall_ci95": [
+    0.379,
+    0.6186
+   ],
+   "f1": 0.657,
+   "f1_ci95": [
+    0.5377,
+    0.7527
+   ]
+  },
+  "neither": {
+   "support": 925,
+   "precision": 0.8015,
+   "precision_ci95": [
+    0.7358,
+    0.8618
+   ],
+   "recall": 0.947,
+   "recall_ci95": [
+    0.9194,
+    0.9756
+   ],
+   "f1": 0.8682,
+   "f1_ci95": [
+    0.8302,
+    0.9018
+   ]
+  }
+ },
+ "confusion_matrix": {
+  "rows_true": [
+   "bird",
+   "drone",
+   "neither"
+  ],
+  "cols_pred": [
+   "bird",
+   "drone",
+   "neither"
+  ],
+  "values": [
+   [
+    201,
+    1,
+    65
+   ],
+   [
+    185,
+    341,
+    152
+   ],
+   [
+    31,
+    18,
+    876
+   ]
+  ]
+ },
+ "subtype_vs_predicted": {
+  "cols_pred": [
+   "bird",
+   "drone",
+   "neither"
+  ],
+  "rows": {
+   "bird": [
+    201,
+    1,
+    65
+   ],
+   "drone": [
+    185,
+    341,
+    152
+   ],
+   "background": [
+    0,
+    1,
+    628
+   ],
+   "airplane": [
+    30,
+    13,
+    170
+   ],
+   "helicopter": [
+    1,
+    4,
+    78
+   ]
+  }
+ },
+ "subtype_accuracy": {
+  "bird": {
+   "accuracy": 0.7528,
+   "n_crops": 267,
+   "n_videos": 12,
+   "ci95": [
+    0.6008,
+    0.8877
+   ]
+  },
+  "drone": {
+   "accuracy": 0.5029,
+   "n_crops": 678,
+   "n_videos": 32,
+   "ci95": [
+    0.38,
+    0.6197
+   ]
+  },
+  "background": {
+   "accuracy": 0.9984,
+   "n_crops": 629,
+   "n_videos": 58,
+   "ci95": [
+    0.9951,
+    1.0
+   ]
+  },
+  "airplane": {
+   "accuracy": 0.7981,
+   "n_crops": 213,
+   "n_videos": 10,
+   "ci95": [
+    0.7089,
+    0.8879
+   ]
+  },
+  "helicopter": {
+   "accuracy": 0.9398,
+   "n_crops": 83,
+   "n_videos": 4,
+   "ci95": [
+    0.9024,
+    0.9762
+   ]
+  }
+ },
+ "threshold": {
+  "score": "P(bird)",
+  "validation_precision_target": 0.9,
+  "chosen_on": "validation split",
+  "average_precision_test": 0.6332,
+  "average_precision_val": 0.8593,
+  "pr_curve_test": [
+   {
+    "threshold": 0.9999,
+    "precision": 1.0,
+    "recall": 0.0037
+   },
+   {
+    "threshold": 0.9976,
+    "precision": 0.9062,
+    "recall": 0.1086
+   },
+   {
+    "threshold": 0.9913,
+    "precision": 0.8413,
+    "recall": 0.1985
+   },
+   {
+    "threshold": 0.9823,
+    "precision": 0.7368,
+    "recall": 0.2622
+   },
+   {
+    "threshold": 0.9715,
+    "precision": 0.6905,
+    "recall": 0.3258
+   },
+   {
+    "threshold": 0.9546,
+    "precision": 0.6772,
+    "recall": 0.4007
+   },
+   {
+    "threshold": 0.9309,
+    "precision": 0.6243,
+    "recall": 0.4419
+   },
+   {
+    "threshold": 0.9059,
+    "precision": 0.5864,
+    "recall": 0.4831
+   },
+   {
+    "threshold": 0.8504,
+    "precision": 0.5657,
+    "recall": 0.5318
+   },
+   {
+    "threshold": 0.8074,
+    "precision": 0.5423,
+    "recall": 0.5768
+   },
+   {
+    "threshold": 0.751,
+    "precision": 0.5255,
+    "recall": 0.618
+   },
+   {
+    "threshold": 0.6789,
+    "precision": 0.5231,
+    "recall": 0.6779
+   },
+   {
+    "threshold": 0.5857,
+    "precision": 0.504,
+    "recall": 0.7116
+   },
+   {
+    "threshold": 0.5019,
+    "precision": 0.4914,
+    "recall": 0.7491
+   },
+   {
+    "threshold": 0.3689,
+    "precision": 0.4761,
+    "recall": 0.7828
+   },
+   {
+    "threshold": 0.2686,
+    "precision": 0.4692,
+    "recall": 0.8277
+   },
+   {
+    "threshold": 0.2,
+    "precision": 0.4551,
+    "recall": 0.8539
+   },
+   {
+    "threshold": 0.1519,
+    "precision": 0.4455,
+    "recall": 0.8876
+   },
+   {
+    "threshold": 0.1214,
+    "precision": 0.4281,
+    "recall": 0.9026
+   },
+   {
+    "threshold": 0.0862,
+    "precision": 0.4158,
+    "recall": 0.9251
+   },
+   {
+    "threshold": 0.0637,
+    "precision": 0.4016,
+    "recall": 0.9401
+   },
+   {
+    "threshold": 0.0472,
+    "precision": 0.3881,
+    "recall": 0.9551
+   },
+   {
+    "threshold": 0.0363,
+    "precision": 0.3755,
+    "recall": 0.9663
+   },
+   {
+    "threshold": 0.0296,
+    "precision": 0.3602,
+    "recall": 0.97
+   },
+   {
+    "threshold": 0.0249,
+    "precision": 0.3475,
+    "recall": 0.9775
+   },
+   {
+    "threshold": 0.0205,
+    "precision": 0.3342,
+    "recall": 0.9775
+   },
+   {
+    "threshold": 0.017,
+    "precision": 0.3202,
+    "recall": 0.9775
+   },
+   {
+    "threshold": 0.0148,
+    "precision": 0.3085,
+    "recall": 0.9775
+   },
+   {
+    "threshold": 0.0131,
+    "precision": 0.2973,
+    "recall": 0.9775
+   },
+   {
+    "threshold": 0.0115,
+    "precision": 0.2874,
+    "recall": 0.985
+   },
+   {
+    "threshold": 0.01,
+    "precision": 0.2788,
+    "recall": 0.9888
+   },
+   {
+    "threshold": 0.0088,
+    "precision": 0.271,
+    "recall": 0.9925
+   },
+   {
+    "threshold": 0.0078,
+    "precision": 0.2633,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0068,
+    "precision": 0.255,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0064,
+    "precision": 0.2475,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0056,
+    "precision": 0.2405,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.005,
+    "precision": 0.2338,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0045,
+    "precision": 0.2272,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0041,
+    "precision": 0.2208,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0036,
+    "precision": 0.2146,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0031,
+    "precision": 0.2092,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0027,
+    "precision": 0.2044,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0024,
+    "precision": 0.1996,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0021,
+    "precision": 0.195,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0019,
+    "precision": 0.1909,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0015,
+    "precision": 0.1866,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0013,
+    "precision": 0.1826,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.001,
+    "precision": 0.179,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0007,
+    "precision": 0.1752,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0006,
+    "precision": 0.1717,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0005,
+    "precision": 0.1682,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0003,
+    "precision": 0.165,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0002,
+    "precision": 0.1617,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0001,
+    "precision": 0.1587,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0001,
+    "precision": 0.1559,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0,
+    "precision": 0.1531,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0,
+    "precision": 0.1504,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0,
+    "precision": 0.1478,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0,
+    "precision": 0.1453,
+    "recall": 1.0
+   },
+   {
+    "threshold": 0.0,
+    "precision": 0.1428,
+    "recall": 1.0
+   }
+  ],
+  "argmax_rule": {
+   "threshold": 0.5,
+   "precision": 0.4914,
+   "precision_ci95": [
+    0.2779292932624441,
+    0.6743794796761962
+   ],
+   "recall": 0.7491,
+   "recall_ci95": [
+    0.5923692322062395,
+    0.8823620188816267
+   ],
+   "predicted_positive": 407,
+   "true_positive": 200,
+   "note": "P(bird) >= 0.5 (not the same as argmax over 3 classes)"
+  },
+  "firmware_default": {
+   "threshold": 0.85,
+   "precision": 0.5657,
+   "precision_ci95": [
+    0.3175680447655783,
+    0.7566999067364945
+   ],
+   "recall": 0.5318,
+   "recall_ci95": [
+    0.34598663196498286,
+    0.6961027440466802
+   ],
+   "predicted_positive": 251,
+   "true_positive": 142
+  },
+  "chosen": {
+   "threshold": 0.8495,
+   "precision": 0.5692,
+   "precision_ci95": [
+    0.3240566856261448,
+    0.7576065533382604
+   ],
+   "recall": 0.5393,
+   "recall_ci95": [
+    0.3586433061208846,
+    0.7012161352592691
+   ],
+   "predicted_positive": 253,
+   "true_positive": 144
+  },
+  "cost_vs_0.5": {
+   "recall_change": -0.2098,
+   "precision_change": 0.0778
+  }
+ },
+ "per_video": [
+  {
+   "video": "V_AIRPLANE_008",
+   "class": "AIRPLANE",
+   "distance_bin": "CLOSE",
+   "n_crops": 33,
+   "accuracy": 0.7273
+  },
+  {
+   "video": "V_AIRPLANE_013",
+   "class": "AIRPLANE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.8125
+  },
+  {
+   "video": "V_AIRPLANE_015",
+   "class": "AIRPLANE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.875
+  },
+  {
+   "video": "V_AIRPLANE_018",
+   "class": "AIRPLANE",
+   "distance_bin": "CLOSE",
+   "n_crops": 32,
+   "accuracy": 0.8125
+  },
+  {
+   "video": "V_AIRPLANE_022",
+   "class": "AIRPLANE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.8125
+  },
+  {
+   "video": "V_AIRPLANE_027",
+   "class": "AIRPLANE",
+   "distance_bin": "DISTANT",
+   "n_crops": 33,
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_AIRPLANE_031",
+   "class": "AIRPLANE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.75
+  },
+  {
+   "video": "V_AIRPLANE_033",
+   "class": "AIRPLANE",
+   "distance_bin": "DISTANT",
+   "n_crops": 33,
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_AIRPLANE_037",
+   "class": "AIRPLANE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.9375
+  },
+  {
+   "video": "V_AIRPLANE_057",
+   "class": "AIRPLANE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.9375
+  },
+  {
+   "video": "V_BIRD_002",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.8438
+  },
+  {
+   "video": "V_BIRD_013",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 33,
+   "accuracy": 0.8788
+  },
+  {
+   "video": "V_BIRD_030",
+   "class": "BIRD",
+   "distance_bin": "DISTANT",
+   "n_crops": 33,
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_BIRD_031",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.9688
+  },
+  {
+   "video": "V_BIRD_032",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 33,
+   "accuracy": 0.7273
+  },
+  {
+   "video": "V_BIRD_033",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 33,
+   "accuracy": 0.7576
+  },
+  {
+   "video": "V_BIRD_034",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 33,
+   "accuracy": 0.8485
+  },
+  {
+   "video": "V_BIRD_043",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.4688
+  },
+  {
+   "video": "V_BIRD_045",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.9688
+  },
+  {
+   "video": "V_BIRD_046",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.9688
+  },
+  {
+   "video": "V_BIRD_047",
+   "class": "BIRD",
+   "distance_bin": "MEDIUM",
+   "n_crops": 42,
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_BIRD_049",
+   "class": "BIRD",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.5312
+  },
+  {
+   "video": "V_DRONE_001",
+   "class": "DRONE",
+   "distance_bin": "CLOSE",
+   "n_crops": 32,
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_DRONE_002",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_DRONE_003",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.7188
+  },
+  {
+   "video": "V_DRONE_004",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.8125
+  },
+  {
+   "video": "V_DRONE_005",
+   "class": "DRONE",
+   "distance_bin": "CLOSE",
+   "n_crops": 32,
+   "accuracy": 0.9375
+  },
+  {
+   "video": "V_DRONE_006",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.6562
+  },
+  {
+   "video": "V_DRONE_007",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.6562
+  },
+  {
+   "video": "V_DRONE_008",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.4062
+  },
+  {
+   "video": "V_DRONE_009",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.3438
+  },
+  {
+   "video": "V_DRONE_010",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.3438
+  },
+  {
+   "video": "V_DRONE_011",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.4062
+  },
+  {
+   "video": "V_DRONE_012",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 33,
+   "accuracy": 0.9091
+  },
+  {
+   "video": "V_DRONE_013",
+   "class": "DRONE",
+   "distance_bin": "CLOSE",
+   "n_crops": 33,
+   "accuracy": 0.9394
+  },
+  {
+   "video": "V_DRONE_014",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 33,
+   "accuracy": 0.4848
+  },
+  {
+   "video": "V_DRONE_015",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 33,
+   "accuracy": 0.7879
+  },
+  {
+   "video": "V_DRONE_016",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.7812
+  },
+  {
+   "video": "V_DRONE_017",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 33,
+   "accuracy": 0.8485
+  },
+  {
+   "video": "V_DRONE_018",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.4062
+  },
+  {
+   "video": "V_DRONE_019",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 33,
+   "accuracy": 0.3333
+  },
+  {
+   "video": "V_DRONE_020",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.5312
+  },
+  {
+   "video": "V_DRONE_021",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.9062
+  },
+  {
+   "video": "V_DRONE_022",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.6875
+  },
+  {
+   "video": "V_DRONE_023",
+   "class": "DRONE",
+   "distance_bin": "CLOSE",
+   "n_crops": 32,
+   "accuracy": 0.7812
+  },
+  {
+   "video": "V_DRONE_024",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.6562
+  },
+  {
+   "video": "V_DRONE_025",
+   "class": "DRONE",
+   "distance_bin": "CLOSE",
+   "n_crops": 32,
+   "accuracy": 0.75
+  },
+  {
+   "video": "V_DRONE_040",
+   "class": "DRONE",
+   "distance_bin": "CLOSE",
+   "n_crops": 32,
+   "accuracy": 1.0
+  },
+  {
+   "video": "V_DRONE_049",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.6875
+  },
+  {
+   "video": "V_DRONE_050",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 33,
+   "accuracy": 0.3333
+  },
+  {
+   "video": "V_DRONE_051",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.3438
+  },
+  {
+   "video": "V_DRONE_052",
+   "class": "DRONE",
+   "distance_bin": "DISTANT",
+   "n_crops": 32,
+   "accuracy": 0.5
+  },
+  {
+   "video": "V_DRONE_053",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 30,
+   "accuracy": 0.5667
+  },
+  {
+   "video": "V_DRONE_102",
+   "class": "DRONE",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 0.9688
+  },
+  {
+   "video": "V_HELICOPTER_001",
+   "class": "HELICOPTER",
+   "distance_bin": "CLOSE",
+   "n_crops": 25,
+   "accuracy": 0.92
+  },
+  {
+   "video": "V_HELICOPTER_002",
+   "class": "HELICOPTER",
+   "distance_bin": "CLOSE",
+   "n_crops": 32,
+   "accuracy": 0.9688
+  },
+  {
+   "video": "V_HELICOPTER_013",
+   "class": "HELICOPTER",
+   "distance_bin": "MEDIUM",
+   "n_crops": 30,
+   "accuracy": 0.9333
+  },
+  {
+   "video": "V_HELICOPTER_014",
+   "class": "HELICOPTER",
+   "distance_bin": "MEDIUM",
+   "n_crops": 32,
+   "accuracy": 1.0
+  }
+ ],
+ "eval_wall_seconds_test_and_val": 9.9
+}

@@ -1,0 +1,122 @@
+{
+ "note": "Every metric carries a label. Microcontroller fields are null: nothing was run on a board.",
+ "host": {
+  "cpu": "Apple M3",
+  "os": "macOS-26.5.1-arm64-arm-64bit",
+  "python": "3.12.16",
+  "onnxruntime": "1.32.0",
+  "onnx": "1.23.2",
+  "latency_threads": 1,
+  "warmup_runs": 20,
+  "timed_runs": 200,
+  "label": "measured (host CPU)",
+  "command": "python bench/run_bench.py"
+ },
+ "units": "KB = 1024 bytes",
+ "fp32_onnx": {
+  "size_kb": {
+   "value": 5950.53,
+   "label": "measured (host CPU)",
+   "unit": "KB"
+  },
+  "test_accuracy": {
+   "value": 0.7358,
+   "label": "measured (host CPU)",
+   "unit": "fraction of test crops",
+   "detail": "crop level, 1870 crops, 58 videos"
+  },
+  "test_macro_f1": {
+   "value": 0.7003,
+   "label": "measured (host CPU)",
+   "detail": "95% interval by video [0.6198, 0.7668]"
+  },
+  "bird_recall": {
+   "value": 0.7715,
+   "label": "measured (host CPU)"
+  },
+  "latency_ms_median": {
+   "value": 4.409,
+   "label": "measured (host CPU)",
+   "unit": "ms",
+   "detail": "median of 200 runs after 20 warm-up runs, 1 thread, batch 1, ONNX Runtime CPU provider"
+  },
+  "latency_ms_p95": {
+   "value": 4.502,
+   "label": "measured (host CPU)",
+   "unit": "ms"
+  }
+ },
+ "int8_onnx": {
+  "size_kb": {
+   "value": 3182.62,
+   "label": "measured (host CPU)",
+   "unit": "KB"
+  },
+  "test_accuracy": {
+   "value": 0.7583,
+   "label": "measured (host CPU)",
+   "unit": "fraction of test crops",
+   "detail": "crop level, 1870 crops, 58 videos"
+  },
+  "test_macro_f1": {
+   "value": 0.7043,
+   "label": "measured (host CPU)",
+   "detail": "95% interval by video [0.6182, 0.7718]"
+  },
+  "bird_recall": {
+   "value": 0.7528,
+   "label": "measured (host CPU)"
+  },
+  "latency_ms_median": {
+   "value": 3.993,
+   "label": "measured (host CPU)",
+   "unit": "ms",
+   "detail": "median of 200 runs after 20 warm-up runs, 1 thread, batch 1, ONNX Runtime CPU provider"
+  },
+  "latency_ms_p95": {
+   "value": 4.129,
+   "label": "measured (host CPU)",
+   "unit": "ms"
+  },
+  "variant": {
+   "chosen": "percentile/conv_gemm/float-se+depthwise",
+   "label": "measured (host CPU)",
+   "note": "partial int8: the depthwise and squeeze-and-excite convolutions stay in float32; the other convolutions and the classifier layer are int8 (QDQ, per-channel weights). Chosen on the validation split among 18 settings (results/quantisation_search.json); plain settings that quantised everything lost most of the accuracy."
+  }
+ },
+ "memory_estimate": {
+  "activation_lower_bound_kb": {
+   "value": 441.0,
+   "label": "estimated (onnx 1.23.2 shape inference)",
+   "unit": "KB",
+   "detail": "largest single-node input+output activation footprint at 1 byte per element; node: Relu /features/features.2/block/block.0/block.0.2/Relu; a lower bound, not a tensor arena size"
+  }
+ },
+ "microcontroller": {
+  "latency_ms": {
+   "value": null,
+   "label": "not measured on hardware"
+  },
+  "frames_per_second": {
+   "value": null,
+   "label": "not measured on hardware"
+  },
+  "power_mw": {
+   "value": null,
+   "label": "not measured on hardware"
+  },
+  "tensor_arena_kb_from_runtime": {
+   "value": null,
+   "label": "not measured on hardware"
+  },
+  "accelerator_offload": {
+   "value": null,
+   "label": "not measured on hardware",
+   "detail": "never attempted"
+  }
+ },
+ "size_ratio_fp32_over_int8": {
+  "value": 1.87,
+  "label": "measured (host CPU)"
+ }
+}
