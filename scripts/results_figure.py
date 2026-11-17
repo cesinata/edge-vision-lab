@@ -1,7 +1,7 @@
-"""Figure 5: confusion matrix and float vs int8 comparison, drawn from the JSON files.
+"""Figure 5 (results): confusion matrix and float32 vs int8, drawn from the JSON files in Option A style.
 
-Called by scripts/make_figures.py. Reads results/eval_torch.json and bench/results.json.
-Anything missing is drawn as "not run yet"; no placeholder numbers.
+Called by scripts/make_figures.py. Reads results/eval_torch.json and bench/results.json. Anything
+missing is drawn as "not run yet"; no placeholder numbers.
 """
 import json
 
@@ -12,66 +12,59 @@ def _load(root, rel):
 
 
 def build(Svg, t, root):
-    ev = _load(root, "results/eval_torch.json")
-    bench = _load(root, "bench/results.json")
-    w, h = 868, 560
-    s = Svg(w, h, "Results: confusion matrix and float versus int8",
-            "Left: a three by three confusion matrix of true class against predicted class on the test split, with counts. "
-            "Right: model size and test accuracy for the float32 and int8 ONNX models. Every number is labelled "
-            "measured on the host CPU.", t)
-    s.rect(0, 0, w, h, 28, "bg")
-    s.text(32, 46, "Results on the test split", 20, "ink", "bg", "bold")
+    ev, bench = _load(root, "results/eval_torch.json"), _load(root, "bench/results.json")
+    w, h = 880, 492
+    s = Svg(w, h, "Results: confusion matrix and float32 versus int8",
+            "Left: a three by three confusion matrix of real class against predicted class on the test split, with counts and the diagonal marked. "
+            "Right: model size and test accuracy for the float32 and partly int8 ONNX models. Every number is measured on the host CPU.", t)
+    s.raw(f'<defs><pattern id="hatch2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="{t["line"]}" stroke-width="2"/></pattern></defs>')
+    s.label(28, 34, "Fig. 5 · Results on the test split")
+    s.text(28, 64, "What the test showed", 20, "ink", "bg", 600)
 
-    # ---- left: confusion matrix
-    s.rect(32, 72, 400, 400, 22, "lilac")
-    s.text(52, 104, "Confusion matrix (crops)", 15, "ink", "lilac", "bold")
+    s.rect(28, 88, 400, 308, "panel", rx=6, extra=f'stroke="{t["ink"]}"')
+    s.text(44, 114, "Confusion matrix (crops)", 14, "ink", "panel", 600)
     if ev is None:
-        s.text(52, 150, "not run yet", 14, "ink", "lilac")
+        s.text(44, 150, "not run yet", 14, "ink", "panel")
     else:
         cls = ev["confusion_matrix"]["rows_true"]
         vals = ev["confusion_matrix"]["values"]
-        x0, y0, cell = 150, 170, 80
-        s.text(x0 + 1.5 * cell, 140, "predicted", 12, "muted", "lilac", "normal", "middle")
-        s.text(52, y0 + 1.5 * cell + 4, "true", 12, "muted", "lilac")
+        x0, y0, cw, ch = 152, 168, 84, 58
+        s.text(x0 + 1.5 * cw, 138, "model said", 12, "muted", "panel", 500, "middle")
+        s.text(44, y0 + 1.5 * ch + 4, "real", 12, "muted", "panel", 500)
         for j, c in enumerate(cls):
-            s.text(x0 + j * cell + cell / 2, 160, c, 12, "ink", "lilac", "bold", "middle")
-            s.text(x0 - 12, y0 + j * cell + cell / 2 + 4, c, 12, "ink", "lilac", "bold", "end")
+            s.text(x0 + j * cw + cw / 2, 158, c, 12, "ink", "panel", 600, "middle")
+            s.text(x0 - 10, y0 + j * ch + ch / 2 + 4, c, 12, "ink", "panel", 600, "end")
         for i in range(3):
             for j in range(3):
-                v = vals[i][j]
-                share = v / max(sum(vals[i]), 1)
-                x, y = x0 + j * cell + 4, y0 + i * cell + 4
-                s.parts.append(f'<rect x="{x}" y="{y}" width="{cell - 8}" height="{cell - 8}" rx="16" '
-                               f'fill="{t["accent"]}" fill-opacity="{0.10 + 0.55 * share:.2f}"/>')
-                # text sits on a surface chip so contrast does not depend on the fill
-                s.rect(x + 12, y + 20, cell - 32, 28, 14, "surface")
-                s.text(x + (cell - 8) / 2, y + 40, str(v), 14, "ink", "surface", "bold", "middle")
-        s.text(52, 450, f"{ev['n_crops']} crops, {ev['n_videos']} videos. measured (host CPU)", 12, "ink", "lilac")
+                on = i == j
+                s.rect(x0 + j * cw, y0 + i * ch, cw, ch, "mark" if on else "bg", extra=f'stroke="{t["ink"]}"' + (' stroke-width="2.5"' if on else ""))
+                s.text(x0 + j * cw + cw / 2, y0 + i * ch + ch / 2 + 6, str(vals[i][j]), 16, "onmark" if on else "ink", "mark" if on else "bg", 600, "middle")
+        s.text(44, 372, f"{ev['n_crops']} crops, {ev['n_videos']} videos. measured (host CPU)", 12, "ink2", "panel", 500)
 
-    # ---- right: float vs int8
-    s.rect(452, 72, 384, 400, 22, "mint")
-    s.text(472, 104, "float32 vs int8 (ONNX)", 15, "ink", "mint", "bold")
+    s.rect(452, 88, 400, 308, "panel", rx=6, extra=f'stroke="{t["ink"]}"')
+    s.text(468, 114, "float32 vs partly int8 (ONNX)", 14, "ink", "panel", 600)
     if bench is None:
-        s.text(472, 150, "not run yet", 14, "ink", "mint")
+        s.text(468, 150, "not run yet", 14, "ink", "panel")
     else:
-        def bar(y, label, v, vmax, text, tile="mint"):
-            s.text(472, y, label, 12, "ink", tile)
-            width = 240 * (v / vmax) if vmax else 0
-            s.rect(472, y + 8, max(width, 4), 22, 11, "train")
-            s.text(472 + max(width, 4) + 8, y + 25, text, 12, "ink", tile)
+        f, i8 = bench["fp32_onnx"], bench["int8_onnx"]
 
-        f, i = bench["fp32_onnx"], bench["int8_onnx"]
-        smax = max(f["size_kb"]["value"], i["size_kb"]["value"])
-        s.text(472, 140, "Size", 13, "muted", "mint", "bold")
-        bar(160, "float32", f["size_kb"]["value"], smax, f"{f['size_kb']['value']:.0f} KB")
-        bar(214, "int8", i["size_kb"]["value"], smax, f"{i['size_kb']['value']:.0f} KB")
-        s.text(472, 290, "Test accuracy (crop level)", 13, "muted", "mint", "bold")
-        bar(310, "float32", f["test_accuracy"]["value"], 1.0, f"{f['test_accuracy']['value']:.3f}")
-        bar(364, "int8", i["test_accuracy"]["value"], 1.0, f"{i['test_accuracy']['value']:.3f}")
-        s.text(472, 440, "measured (host CPU). Accuracy bars start at 0.", 12, "ink", "mint")
-    # ---- bottom strip
-    s.rect(32, 488, 804, 52, 22, "surface")
-    s.circle(62, 514, 8, "accent")
-    s.text(82, 512, "Small, noisy test set from few scenes. Nothing here was run on a board:", 12, "ink", "surface")
-    s.text(82, 530, "device latency, power and arena size are not measured on hardware.", 12, "ink", "surface")
+        def bar(y, name, v, vmax, text, hatched):
+            s.text(468, y, name, 12, "ink", "panel", 500)
+            bw = 230 * v / vmax
+            s.raw(f'<rect x="468" y="{y + 8}" width="{bw:.1f}" height="22" fill="{"url(#hatch2)" if hatched else t["ink"]}"/>')
+            s.text(468 + bw + 8, y + 25, text, 12, "ink", "panel", 500)
+
+        smax = max(f["size_kb"]["value"], i8["size_kb"]["value"])
+        s.text(468, 144, "Model size (KB)", 12, "muted", "panel", 600)
+        bar(164, "float32", f["size_kb"]["value"], smax, f"{f['size_kb']['value']:,.0f}", False)
+        bar(212, "partly int8", i8["size_kb"]["value"], smax, f"{i8['size_kb']['value']:,.0f}", True)
+        s.text(468, 268, "Test accuracy (crop level, bars start at 0)", 12, "muted", "panel", 600)
+        bar(288, "float32", f["test_accuracy"]["value"], 1.0, f"{f['test_accuracy']['value']:.3f}", False)
+        bar(336, "partly int8", i8["test_accuracy"]["value"], 1.0, f"{i8['test_accuracy']['value']:.3f}", True)
+        s.text(468, 384, "measured (host CPU)", 12, "ink2", "panel", 500)
+
+    s.rect(28, 412, 824, 62, "bg", rx=6, extra=f'stroke="{t["ink"]}"')
+    s.raw(f'<circle cx="50" cy="434" r="6" fill="{t["mark"]}"/>')
+    s.text(66, 438, "Small, noisy test set from few scenes.", 12, "ink", "bg", 500)
+    s.text(66, 456, "Nothing was run on a board: latency, power and arena size are not measured on hardware.", 12, "ink", "bg", 500)
     return s
