@@ -1,0 +1,7 @@
+line-length = 120
+target-version = "py312"
+extend-exclude = [".venv", ".venv312", "data", "models", "build", "web"]
+
+[lint]
+select = ["E", "F", "W"]
+ignore = ["E402", "E501"]  # sys.path inserts before local imports are intentional
