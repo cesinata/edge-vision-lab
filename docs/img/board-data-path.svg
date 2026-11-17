@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 868 440" width="868" height="440" role="img" aria-labelledby="t d" font-family='ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace'>
+<title id="t">Generic vision board data path</title>
+<desc id="d">A camera sends frames to a microcontroller in the middle. The microcontroller exchanges tensors with an optional accelerator, reads and writes memory, and sends results out over a host link. A strip says nothing here is measured on hardware.</desc>
+<rect x="0" y="0" width="868" height="440" rx="28" fill="#FBF8F3"/>
+<text x="32" y="46" font-size="20" font-weight="bold" fill="#2E2A33" text-anchor="start">A generic vision board: where the data goes</text>
+<line x1="222" y1="125" x2="339" y2="125" stroke="#635C6B" stroke-width="3" stroke-linecap="round"/>
+<circle cx="222" cy="125" r="5" fill="#2E2A33"/>
+<circle cx="339" cy="125" r="5" fill="#2E2A33"/>
+<text x="280.5" y="115" font-size="12" font-weight="normal" fill="#635C6B" text-anchor="middle">frame</text>
+<line x1="529" y1="125" x2="646" y2="125" stroke="#635C6B" stroke-width="3" stroke-linecap="round"/>
+<circle cx="529" cy="125" r="5" fill="#2E2A33"/>
+<circle cx="646" cy="125" r="5" fill="#2E2A33"/>
+<text x="587.5" y="115" font-size="12" font-weight="normal" fill="#635C6B" text-anchor="middle">results</text>
+<line x1="222" y1="265" x2="339" y2="265" stroke="#635C6B" stroke-width="3" stroke-linecap="round"/>
+<circle cx="222" cy="265" r="5" fill="#2E2A33"/>
+<circle cx="339" cy="265" r="5" fill="#2E2A33"/>
+<text x="280.5" y="255" font-size="12" font-weight="normal" fill="#635C6B" text-anchor="middle">tensors</text>
+<line x1="529" y1="265" x2="646" y2="265" stroke="#635C6B" stroke-width="3" stroke-linecap="round"/>
+<circle cx="529" cy="265" r="5" fill="#2E2A33"/>
+<circle cx="646" cy="265" r="5" fill="#2E2A33"/>
+<text x="587.5" y="255" font-size="12" font-weight="normal" fill="#635C6B" text-anchor="middle">read, write</text>
+<rect x="32" y="80" width="190" height="90" rx="22" fill="#E7DDF7"/>
+<text x="52" y="118" font-size="15" font-weight="bold" fill="#2E2A33" text-anchor="start">Camera</text>
+<text x="52" y="142" font-size="12" font-weight="normal" fill="#2E2A33" text-anchor="start">sends frames</text>
+<rect x="32" y="220" width="190" height="90" rx="22" fill="#FBEBB8"/>
+<text x="52" y="258" font-size="15" font-weight="bold" fill="#2E2A33" text-anchor="start">Accelerator</text>
+<text x="52" y="282" font-size="12" font-weight="normal" fill="#2E2A33" text-anchor="start">optional, runs model</text>
+<rect x="339" y="80" width="190" height="230" rx="22" fill="#D5EEDF"/>
+<text x="359" y="118" font-size="15" font-weight="bold" fill="#2E2A33" text-anchor="start">Microcontroller</text>
+<text x="359" y="142" font-size="12" font-weight="normal" fill="#2E2A33" text-anchor="start">runs the logic</text>
+<rect x="646" y="80" width="190" height="90" rx="22" fill="#FBEBB8"/>
+<text x="666" y="118" font-size="15" font-weight="bold" fill="#2E2A33" text-anchor="start">Host link</text>
+<text x="666" y="142" font-size="12" font-weight="normal" fill="#2E2A33" text-anchor="start">results out</text>
+<rect x="646" y="220" width="190" height="90" rx="22" fill="#E7DDF7"/>
+<text x="666" y="258" font-size="15" font-weight="bold" fill="#2E2A33" text-anchor="start">Memory</text>
+<text x="666" y="282" font-size="12" font-weight="normal" fill="#2E2A33" text-anchor="start">weights, buffers</text>
+<rect x="32" y="340" width="804" height="52" rx="22" fill="#FFFFFF"/>
+<circle cx="62" cy="366" r="8" fill="#5B3FA8"/>
+<text x="82" y="371" font-size="12" font-weight="normal" fill="#2E2A33" text-anchor="start">not measured on hardware: no board was used,</text>
+<text x="82" y="387" font-size="12" font-weight="normal" fill="#2E2A33" text-anchor="start">so this figure shows no speed, power or memory size</text>
+</svg>
